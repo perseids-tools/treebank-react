@@ -1,418 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { parseXml } from '../../lib/parsing';
 import Treebank from '../Treebank';
 
-const data = {
-  nodes: [
-    {
-      id: '0',
-      label: '[ROOT]',
-    },
-    {
-      id: '1',
-      label: 'Ἡροδότου',
-    },
-    {
-      id: '2',
-      label: 'Ἁλικαρνησσέος',
-    },
-    {
-      id: '3',
-      label: 'ἱστορίης',
-    },
-    {
-      id: '4',
-      label: 'ἀπόδεξις',
-    },
-    {
-      id: '5',
-      label: 'ἥδε',
-    },
-    {
-      id: '6',
-      label: ',',
-    },
-    {
-      id: '7',
-      label: 'ὡς',
-    },
-    {
-      id: '8',
-      label: 'μή',
-    },
-    {
-      id: '9',
-      label: '-τε',
-    },
-    {
-      id: '10',
-      label: 'τὰ',
-    },
-    {
-      id: '11',
-      label: 'γενόμενα',
-    },
-    {
-      id: '12',
-      label: 'ἐξ',
-    },
-    {
-      id: '13',
-      label: 'ἀνθρώπων',
-    },
-    {
-      id: '14',
-      label: 'τῷ',
-    },
-    {
-      id: '15',
-      label: 'χρόνῳ',
-    },
-    {
-      id: '16',
-      label: 'ἐξίτηλα',
-    },
-    {
-      id: '17',
-      label: 'γένηται',
-    },
-    {
-      id: '18',
-      label: ',',
-    },
-    {
-      id: '19',
-      label: 'μή',
-    },
-    {
-      id: '20',
-      label: '-τε',
-    },
-    {
-      id: '21',
-      label: 'ἔργα',
-    },
-    {
-      id: '22',
-      label: 'μεγάλα',
-    },
-    {
-      id: '23',
-      label: 'τε',
-    },
-    {
-      id: '24',
-      label: 'καὶ',
-    },
-    {
-      id: '25',
-      label: 'θωμαστά',
-    },
-    {
-      id: '26',
-      label: ',',
-    },
-    {
-      id: '27',
-      label: 'τὰ',
-    },
-    {
-      id: '28',
-      label: 'μὲν',
-    },
-    {
-      id: '29',
-      label: 'Ἕλλησι',
-    },
-    {
-      id: '30',
-      label: 'τὰ',
-    },
-    {
-      id: '31',
-      label: 'δὲ',
-    },
-    {
-      id: '32',
-      label: 'βαρβάροισι',
-    },
-    {
-      id: '33',
-      label: 'ἀποδεχθέντα',
-    },
-    {
-      id: '34',
-      label: ',',
-    },
-    {
-      id: '35',
-      label: 'ἀκλεᾶ',
-    },
-    {
-      id: '36',
-      label: 'γένηται',
-    },
-    {
-      id: '37',
-      label: ',',
-    },
-    {
-      id: '38',
-      label: 'τά',
-    },
-    {
-      id: '39',
-      label: 'τε',
-    },
-    {
-      id: '40',
-      label: 'ἄλλα',
-    },
-    {
-      id: '41',
-      label: 'καὶ',
-    },
-    {
-      id: '42',
-      label: 'δι᾽',
-    },
-    {
-      id: '43',
-      label: 'ἣν',
-    },
-    {
-      id: '44',
-      label: 'αἰτίην',
-    },
-    {
-      id: '45',
-      label: 'ἐπολέμησαν',
-    },
-    {
-      id: '46',
-      label: 'ἀλλήλοισι',
-    },
-    {
-      id: '47',
-      label: '.',
-    },
-    {
-      id: '48',
-      label: 'ἐστιν',
-    },
-    {
-      id: '49',
-      label: 'ἀποδεχθέντα',
-    },
-  ],
-  links: [
-    {
-      source: '3',
-      target: '1',
-      label: 'AuxY',
-    },
-    {
-      source: '1',
-      target: '2',
-      label: 'AuxX',
-    },
-    {
-      source: '4',
-      target: '3',
-      label: 'AB-LOCAT',
-    },
-    {
-      source: '48',
-      target: '4',
-      label: 'A-SUBJ',
-    },
-    {
-      source: '48',
-      target: '5',
-      label: 'COORD',
-    },
-    {
-      source: '0',
-      target: '6',
-      label: 'ATR',
-    },
-    {
-      source: '48',
-      target: '7',
-    },
-    {
-      source: '17',
-      target: '8',
-    },
-    {
-      source: '20',
-      target: '9',
-    },
-    {
-      source: '11',
-      target: '10',
-    },
-    {
-      source: '17',
-      target: '11',
-    },
-    {
-      source: '11',
-      target: '12',
-    },
-    {
-      source: '12',
-      target: '13',
-    },
-    {
-      source: '15',
-      target: '14',
-    },
-    {
-      source: '17',
-      target: '15',
-    },
-    {
-      source: '17',
-      target: '16',
-    },
-    {
-      source: '20',
-      target: '17',
-    },
-    {
-      source: '0',
-      target: '18',
-    },
-    {
-      source: '36',
-      target: '19',
-    },
-    {
-      source: '7',
-      target: '20',
-    },
-    {
-      source: '36',
-      target: '21',
-    },
-    {
-      source: '24',
-      target: '22',
-    },
-    {
-      source: '24',
-      target: '23',
-    },
-    {
-      source: '21',
-      target: '24',
-    },
-    {
-      source: '24',
-      target: '25',
-    },
-    {
-      source: '0',
-      target: '26',
-    },
-    {
-      source: '21',
-      target: '27',
-    },
-    {
-      source: '31',
-      target: '28',
-    },
-    {
-      source: '49',
-      target: '29',
-    },
-    {
-      source: '21',
-      target: '30',
-    },
-    {
-      source: '21',
-      target: '31',
-    },
-    {
-      source: '33',
-      target: '32',
-    },
-    {
-      source: '31',
-      target: '33',
-    },
-    {
-      source: '0',
-      target: '34',
-    },
-    {
-      source: '36',
-      target: '35',
-    },
-    {
-      source: '20',
-      target: '36',
-    },
-    {
-      source: '0',
-      target: '37',
-    },
-    {
-      source: '40',
-      target: '38',
-    },
-    {
-      source: '41',
-      target: '39',
-    },
-    {
-      source: '41',
-      target: '40',
-    },
-    {
-      source: '36',
-      target: '41',
-    },
-    {
-      source: '45',
-      target: '42',
-    },
-    {
-      source: '44',
-      target: '43',
-    },
-    {
-      source: '42',
-      target: '44',
-    },
-    {
-      source: '41',
-      target: '45',
-    },
-    {
-      source: '45',
-      target: '46',
-    },
-    {
-      source: '0',
-      target: '47',
-    },
-    {
-      source: '0',
-      target: '48',
-    },
-    {
-      source: '31',
-      target: '49',
-    },
-  ],
-};
+const initialXml = '<treebank xml:lang="grc" format="aldt" version="1.5">\n \
+  <date>Thu Aug 21 19:31:06 +0000 2014</date>\n \
+  <annotator>\n \
+    <short/>\n \
+    <name/>\n \
+    <address/>\n \
+    <uri>http://services.perseids.org/llt/segtok</uri>\n \
+  </annotator>\n \
+  <annotator>\n \
+    <short/>\n \
+    <name/>\n \
+    <address/>\n \
+    <uri>http://github.com/latin-language-toolkit/arethusa</uri>\n \
+  </annotator>\n \
+  <annotator>\n \
+    <short>Vanessa Gorman</short>\n \
+    <name>Vanessa Gorman</name>\n \
+    <address>vbgorman@gmail.com</address>\n \
+    <uri>\n \
+      http://data.perseus.org/sosol/users/Vanessa%20Gorman\n \
+    </uri>\n \
+  </annotator>\n \
+  <sentence id="1" document_id="http://perseids.org/annotsrc/urn:cts:greekLit:tlg0540.tlg001.perseus-grc1" subdoc="1-50" span="">\n \
+    <word id="1" form="περὶ" lemma="περί" postag="r--------" relation="AuxP" head="4"/>\n \
+    <word id="2" form="πολλοῦ" lemma="πολύς" postag="a-s---mg-" relation="ADV" head="1"/>\n \
+    <word id="3" form="ἂν" lemma="ἄν1" postag="d--------" relation="AuxY" head="4"/>\n \
+    <word id="4" form="ποιησαίμην" lemma="ποιέω" postag="v1saom---" relation="PRED" head="0"/>\n \
+    <word id="5" form="," lemma="punc1" postag="u--------" relation="AuxX" head="7"/>\n \
+    <word id="6" form="ὦ" lemma="ὦ" postag="i--------" relation="AuxZ" head="7"/>\n \
+    <word id="7" form="ἄνδρες" lemma="ἀνήρ" postag="n-p---mv-" relation="ExD" head="4"/>\n \
+    <word id="8" form="," lemma="punc1" postag="u--------" relation="AuxX" head="7"/>\n \
+    <word id="9" form="τὸ" lemma="ὁ" postag="l-s---na-" relation="ATR" head="18"/>\n \
+    <word id="10" form="τοιούτους" lemma="τοιοῦτος" postag="a-p---ma_" relation="ATR" head="11"/>\n \
+    <word id="11" form="ὑμᾶς" lemma="σύ" postag="p2p---ma-" relation="SBJ" head="18"/>\n \
+    <word id="12" form="ἐμοὶ" lemma="ἐγώ" postag="p1s---md-" relation="ATR" head="13"/>\n \
+    <word id="13" form="δικαστὰς" lemma="δικαστής" postag="n-p---ma-" relation="PNOM" head="18"/>\n \
+    <word id="14" form="περὶ" lemma="περί" postag="r--------" relation="AuxP" head="13"/>\n \
+    <word id="15" form="τούτου" lemma="οὗτος" postag="a-s---ng_" relation="ATR" head="17"/>\n \
+    <word id="16" form="τοῦ" lemma="ὁ" postag="l-s---ng-" relation="ATR" head="17"/>\n \
+    <word id="17" form="πράγματος" lemma="πρᾶγμα" postag="n-s---ng-" relation="ATR" head="14"/>\n \
+    <word id="18" form="γενέσθαι" lemma="γίγνομαι" postag="v--anm---" relation="OBJ" head="4"/>\n \
+    <word id="19" form="," lemma="punc1" postag="u--------" relation="AuxX" head="24"/>\n \
+    <word id="20" form="οἷοίπερ" lemma="οἷος" postag="a-p---mn-" relation="PNOM" head="24"/>\n \
+    <word id="21" form="ἂν" lemma="ἄν1" postag="d--------" relation="AuxY" head="24"/>\n \
+    <word id="22" form="ὑμῖν" lemma="σύ" postag="p2p---md-" relation="ATR" head="20"/>\n \
+    <word id="23" form="αὐτοῖς" lemma="αὐτός" postag="a-p---md_" relation="ATR" head="22"/>\n \
+    <word id="24" form="εἴητε" lemma="εἰμί" postag="v2ppoa---" relation="ATR" head="10"/>\n \
+    <word id="25" form="τοιαῦτα" lemma="τοιοῦτος" postag="p-p---na-" relation="OBJ" head="26"/>\n \
+    <word id="26" form="πεπονθότες" lemma="πάσχω" postag="v-prpamn-" relation="ADV" head="24"/>\n \
+    <word id="27" form="·" lemma="punc1" postag="u--------" relation="AuxK" head="0"/>\n \
+  </sentence>\n \
+</treebank>';
 
-const App = () => (
-  <Treebank treebank={data} />
-);
+const App = () => {
+  const [xml, setXml] = useState(initialXml);
+  const handleChange = ({ target: { value }}) => {
+    setXml(value);
+  };
+
+  const data = parseXml(xml);
+  return (
+    <>
+      <Treebank treebank={data} />
+      <br />
+      <textarea rows={30} cols={135} value={xml} onChange={handleChange} />
+    </>
+  );
+};
 
 export default App;

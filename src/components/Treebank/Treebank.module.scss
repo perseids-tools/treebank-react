@@ -7,16 +7,24 @@
     fill: none;
   }
 
+  text {
+    fill: #222;
+    font-family: sans-serif;
+  }
+
   :global {
     .nodes {
       fill: none;
     }
+
+    .edgeLabels {
+      text {
+        font-size: 0.7rem;
+      }
+    }
+
     .nodes {
       text {
-        fill: #222;
-        font-weight: 400;
-        font-family: "Helvetica Neue", Helvetica, Helvetica, Arial, sans-serif;
-        line-height: 1;
         font-size: 1rem;
       }
     }
