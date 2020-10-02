@@ -209,26 +209,32 @@ const data = {
     {
       source: '3',
       target: '1',
+      label: 'AuxY',
     },
     {
       source: '1',
       target: '2',
+      label: 'AuxX',
     },
     {
       source: '4',
       target: '3',
+      label: 'AB-LOCAT',
     },
     {
       source: '48',
       target: '4',
+      label: 'A-SUBJ',
     },
     {
       source: '48',
       target: '5',
+      label: 'COORD',
     },
     {
       source: '0',
       target: '6',
+      label: 'ATR',
     },
     {
       source: '48',

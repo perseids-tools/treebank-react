@@ -1,17 +1,23 @@
 .treebank {
+  background-color: rgb(242, 242, 242);
+
   path {
-    stroke: black;
-    fill: black;
-    stroke-width: 1.5px;
+    stroke: #333;
+    stroke-width : 0.5px;
+    fill: none;
   }
 
   :global {
     .nodes {
-      fill: darkgray;
+      fill: none;
     }
     .nodes {
       text {
-        fill: white;
+        fill: #222;
+        font-weight: 400;
+        font-family: "Helvetica Neue", Helvetica, Helvetica, Arial, sans-serif;
+        line-height: 1;
+        font-size: 1rem;
       }
     }
   }
