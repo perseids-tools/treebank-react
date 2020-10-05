@@ -2,7 +2,7 @@ import { parseString } from 'xml2js';
 
 const xmlToJson = (xml) => {
   let json;
-  parseString(xml, function (_err, result) {
+  parseString(xml, (_err, result) => {
     json = result;
   });
 
@@ -17,7 +17,11 @@ const parseXml = (xml) => {
   const { treebank } = xmlToJson(xml);
   const json = { nodes: [{ id: '0', label: '[ROOT]' }], links: [] };
 
-  treebank.sentence[0].word.forEach(({ $: { id, form, head, relation, postag }}) => {
+  treebank.sentence[0].word.forEach(({
+    $: {
+      id, form, head, relation, postag,
+    },
+  }) => {
     json.nodes.push({ id, label: form, pos: extractPostag(postag) });
     json.links.push({ source: head, target: id, label: relation });
   });
@@ -26,5 +30,6 @@ const parseXml = (xml) => {
 };
 
 export {
+  // eslint-disable-next-line import/prefer-default-export
   parseXml,
 };

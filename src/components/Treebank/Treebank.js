@@ -1,5 +1,6 @@
 import React from 'react';
-import DagreGraph from 'dagre-d3-react'
+import { arrayOf, shape, string } from 'prop-types';
+import DagreGraph from 'dagre-d3-react';
 import { curveBasis } from 'd3-shape';
 
 import styles from './Treebank.module.scss';
@@ -19,7 +20,7 @@ const colorMap = {
   g: 'lightcoral',
   x: 'gray',
   '-': '#222',
-}
+};
 
 const config = {
   rankdir: 'TB',
@@ -33,6 +34,7 @@ const nodeConfig = ({ pos }) => (
 
 const configureNodes = (nodes) => (
   nodes.map((node) => {
+    // eslint-disable-next-line no-param-reassign
     node.config = nodeConfig(node);
 
     return node;
@@ -46,6 +48,7 @@ const linkConfig = {
 
 const configureLinks = (links) => (
   links.map((link) => {
+    // eslint-disable-next-line no-param-reassign
     link.config = linkConfig;
 
     return link;
@@ -65,5 +68,20 @@ const Treebank = ({ treebank: { nodes, links } }) => (
     width="1000"
   />
 );
+
+Treebank.propTypes = {
+  treebank: shape({
+    nodes: arrayOf(shape({
+      id: string.isRequired,
+      label: string.isRequired,
+      pos: string.isRequired,
+    })).isRequired,
+    links: arrayOf(shape({
+      source: string.isRequired,
+      target: string.isRequired,
+      label: string.isRequired,
+    })).isRequired,
+  }).isRequired,
+};
 
 export default Treebank;
