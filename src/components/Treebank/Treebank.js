@@ -1,72 +1,14 @@
 import React from 'react';
-import { arrayOf, shape, string } from 'prop-types';
-import DagreGraph from 'dagre-d3-react';
-import { curveBasis } from 'd3-shape';
+import {
+  arrayOf, shape, string, element,
+} from 'prop-types';
 
-import styles from './Treebank.module.scss';
+import TreebankContext from './treebank-context';
 
-const colorMap = {
-  n: 'rgb(43, 114, 124)',
-  a: 'blue',
-  d: 'darkorange',
-  c: 'deeppink',
-  r: 'green',
-  p: 'purple',
-  i: 'gold',
-  v: 'red',
-  m: 'lightgreen',
-  u: '#222',
-  l: 'lightblue',
-  g: 'lightcoral',
-  x: 'gray',
-  '-': '#222',
-};
-
-const config = {
-  rankdir: 'TB',
-};
-
-const nodeConfig = ({ pos }) => (
-  {
-    labelStyle: `fill: ${colorMap[pos]}`,
-  }
-);
-
-const configureNodes = (nodes) => (
-  nodes.map((node) => {
-    // eslint-disable-next-line no-param-reassign
-    node.config = nodeConfig(node);
-
-    return node;
-  })
-);
-
-const linkConfig = {
-  arrowheadStyle: 'display: none',
-  curve: curveBasis,
-};
-
-const configureLinks = (links) => (
-  links.map((link) => {
-    // eslint-disable-next-line no-param-reassign
-    link.config = linkConfig;
-
-    return link;
-  })
-);
-
-const Treebank = ({ treebank: { nodes, links } }) => (
-  <DagreGraph
-    nodes={configureNodes(nodes)}
-    links={configureLinks(links)}
-    fitBoundaries
-    zoomable
-    className={styles.treebank}
-    config={config}
-
-    height="600"
-    width="1000"
-  />
+const Treebank = ({ treebank, children }) => (
+  <TreebankContext.Provider value={treebank}>
+    {children}
+  </TreebankContext.Provider>
 );
 
 Treebank.propTypes = {
@@ -82,6 +24,11 @@ Treebank.propTypes = {
       label: string.isRequired,
     })).isRequired,
   }).isRequired,
+  children: element,
+};
+
+Treebank.defaultProps = {
+  children: null,
 };
 
 export default Treebank;

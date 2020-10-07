@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { parseXml } from '../../lib/parsing';
 import Treebank from '../Treebank';
+import Sentence from '../Treebank/Sentence';
+import Graph from '../Treebank/Graph';
 
 const initialXml = '<treebank xml:lang="grc" format="aldt" version="1.5">\n'
   + '   <date>Thu Aug 21 19:31:06 +0000 2014</date>\n'
@@ -65,7 +67,10 @@ const App = () => {
   const data = parseXml(xml);
   return (
     <>
-      <Treebank treebank={data} />
+      <Treebank treebank={data}>
+        <Sentence />
+        <Graph />
+      </Treebank>
       <br />
       <textarea rows={30} cols={135} value={xml} onChange={handleChange} />
     </>
