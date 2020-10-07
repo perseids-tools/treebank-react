@@ -35,7 +35,7 @@ const nodeToSpan = ({ pos, label }) => {
 
 const Sentence = () => (
   <TreebankContext.Consumer>
-    {({ nodes }) => (
+    {({ treebank: { nodes } }) => (
       <div className={styles.sentence}>
         <p>
           {nodes.map(nodeToSpan)}

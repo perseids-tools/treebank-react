@@ -58,7 +58,7 @@ const configureLinks = (links) => (
 
 const Graph = () => (
   <TreebankContext.Consumer>
-    {({ nodes, links }) => (
+    {({ treebank: { nodes, links }, setActive }) => (
       <DagreGraph
         nodes={configureNodes(nodes)}
         links={configureLinks(links)}
@@ -66,6 +66,7 @@ const Graph = () => (
         zoomable
         className={styles.graph}
         config={config}
+        onNodeClick={({ original }) => setActive(original)}
 
         height="600"
         width="1000"

@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   arrayOf, shape, string, element,
 } from 'prop-types';
 
 import TreebankContext from './treebank-context';
 
-const Treebank = ({ treebank, children }) => (
-  <TreebankContext.Provider value={treebank}>
-    {children}
-  </TreebankContext.Provider>
-);
+const Treebank = ({ treebank, children }) => {
+  const [active, setActive] = useState(null);
+
+  return (
+    <TreebankContext.Provider value={{ treebank, active, setActive }}>
+      {children}
+    </TreebankContext.Provider>
+  );
+};
 
 Treebank.propTypes = {
   treebank: shape({
