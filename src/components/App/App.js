@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import { parseXml } from '../../lib/parsing';
 import Treebank from '../Treebank';
 import Sentence from '../Treebank/Sentence';
 import Graph from '../Treebank/Graph';
@@ -65,13 +64,12 @@ const App = () => {
     setXml(value);
   };
 
-  const data = parseXml(xml);
   return (
     <>
-      <Treebank treebank={data}>
+      <Treebank treebank={xml} chunk="1">
         <Sentence />
-        <InfoPanel />
         <Graph />
+        <InfoPanel />
       </Treebank>
       <br />
       <textarea rows={30} cols={135} value={xml} onChange={handleChange} />

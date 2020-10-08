@@ -13,23 +13,26 @@ const extractPostag = (postag) => (
   postag ? postag[0] : '-'
 );
 
-const parseXml = (xml) => {
-  const { treebank } = xmlToJson(xml);
-  const json = { nodes: [{ id: '0', label: '[ROOT]' }], links: [] };
+const sentenceToGraph = (sentence) => {
+  const graph = { nodes: [{ id: '0', label: '[ROOT]' }], links: [] };
 
-  treebank.sentence[0].word.forEach(({
-    $: {
-      id, form, head, relation, postag,
-    },
-  }) => {
-    json.nodes.push({ id, label: form, pos: extractPostag(postag) });
-    json.links.push({ source: head, target: id, label: relation });
+  sentence.word.forEach((word) => {
+    const {
+      $: {
+        id, form, head, relation, postag,
+      },
+    } = word;
+    graph.nodes.push({
+      id, label: form, pos: extractPostag(postag), _word: word,
+    });
+    graph.links.push({ source: head, target: id, label: relation });
   });
 
-  return json;
+  return graph;
 };
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
-  parseXml,
+  xmlToJson,
+  sentenceToGraph,
+  extractPostag,
 };

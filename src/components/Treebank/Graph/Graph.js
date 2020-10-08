@@ -4,6 +4,8 @@ import { curveBasis } from 'd3-shape';
 
 import styles from './Graph.module.scss';
 
+import { sentenceToGraph } from '../../../lib/parsing';
+
 import TreebankContext from '../treebank-context';
 
 const colorMap = {
@@ -58,20 +60,24 @@ const configureLinks = (links) => (
 
 const Graph = () => (
   <TreebankContext.Consumer>
-    {({ treebank: { nodes, links }, setActive }) => (
-      <DagreGraph
-        nodes={configureNodes(nodes)}
-        links={configureLinks(links)}
-        fitBoundaries
-        zoomable
-        className={styles.graph}
-        config={config}
-        onNodeClick={({ original }) => setActive(original)}
+    {({ sentence, setActive }) => {
+      const { nodes, links } = sentenceToGraph(sentence);
 
-        height="600"
-        width="1000"
-      />
-    )}
+      return (
+        <DagreGraph
+          nodes={configureNodes(nodes)}
+          links={configureLinks(links)}
+          fitBoundaries
+          zoomable
+          className={styles.graph}
+          config={config}
+          onNodeClick={({ original: { _word } }) => setActive(_word)}
+
+          height="600"
+          width="1000"
+        />
+      );
+    }}
   </TreebankContext.Consumer>
 );
 

@@ -6,7 +6,7 @@ const InfoPanel = () => (
   <TreebankContext.Consumer>
     {({ active }) => {
       if (active) {
-        const { id, label, pos } = active;
+        const { $: { id, label, postag } } = active;
 
         return (
           <div>
@@ -21,7 +21,7 @@ const InfoPanel = () => (
               </li>
               <li>
                 pos:
-                {pos}
+                {postag}
               </li>
             </ul>
           </div>

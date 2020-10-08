@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './Sentence.module.scss';
 
+import { extractPostag } from '../../../lib/parsing';
+
 import TreebankContext from '../treebank-context';
 
 const colorMap = {
@@ -22,12 +24,12 @@ const colorMap = {
 };
 
 // eslint-disable-next-line react/prop-types
-const nodeToSpan = ({ pos, label }) => {
-  const color = colorMap[pos];
+const wordToSpan = ({ $: { id, form, postag } }) => {
+  const color = colorMap[extractPostag(postag)];
 
   return (
-    <span key={label} style={{ color }}>
-      {label}
+    <span key={id} style={{ color }}>
+      {form}
       {' '}
     </span>
   );
@@ -35,10 +37,10 @@ const nodeToSpan = ({ pos, label }) => {
 
 const Sentence = () => (
   <TreebankContext.Consumer>
-    {({ treebank: { nodes } }) => (
+    {({ sentence }) => (
       <div className={styles.sentence}>
         <p>
-          {nodes.map(nodeToSpan)}
+          {sentence.word.map(wordToSpan)}
         </p>
       </div>
     )}

@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
-import {
-  arrayOf, shape, string, element,
-} from 'prop-types';
+import { node, string } from 'prop-types';
+
+import { xmlToJson } from '../../lib/parsing';
 
 import TreebankContext from './treebank-context';
 
-const Treebank = ({ treebank, children }) => {
+const getSentence = (treebank, chunk) => {
+  const treebankJson = xmlToJson(treebank);
+
+  return treebankJson.treebank.sentence.find(({ $ }) => $.id && $.id === chunk);
+};
+
+const Treebank = ({ treebank, chunk, children }) => {
   const [active, setActive] = useState(null);
+  const sentence = getSentence(treebank, chunk);
 
   return (
-    <TreebankContext.Provider value={{ treebank, active, setActive }}>
+    <TreebankContext.Provider value={{
+      sentence,
+      chunk,
+      active,
+      setActive,
+    }}
+    >
       {children}
     </TreebankContext.Provider>
   );
 };
 
 Treebank.propTypes = {
-  treebank: shape({
-    nodes: arrayOf(shape({
-      id: string.isRequired,
-      label: string.isRequired,
-      pos: string.isRequired,
-    })).isRequired,
-    links: arrayOf(shape({
-      source: string.isRequired,
-      target: string.isRequired,
-      label: string.isRequired,
-    })).isRequired,
-  }).isRequired,
-  children: element,
+  treebank: string.isRequired,
+  chunk: string.isRequired,
+  children: node,
 };
 
 Treebank.defaultProps = {
