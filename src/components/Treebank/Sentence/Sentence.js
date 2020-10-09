@@ -2,8 +2,6 @@ import React from 'react';
 
 import styles from './Sentence.module.scss';
 
-import { extractPostag } from '../../../lib/parsing';
-
 import TreebankContext from '../treebank-context';
 
 const colorMap = {
@@ -25,7 +23,7 @@ const colorMap = {
 
 // eslint-disable-next-line react/prop-types
 const wordToSpan = ({ $: { id, form, postag } }) => {
-  const color = colorMap[extractPostag(postag)];
+  const color = colorMap[postag[0] || '-'];
 
   return (
     <span key={id} style={{ color }}>

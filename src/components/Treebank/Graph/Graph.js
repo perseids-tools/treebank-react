@@ -5,40 +5,30 @@ import { curveBasis } from 'd3-shape';
 import styles from './Graph.module.scss';
 
 import { sentenceToGraph } from '../../../lib/parsing';
+import { getColor } from '../config';
 
 import TreebankContext from '../treebank-context';
 
-const colorMap = {
-  n: 'rgb(43, 114, 124)',
-  a: 'blue',
-  d: 'darkorange',
-  c: 'deeppink',
-  r: 'green',
-  p: 'purple',
-  i: 'gold',
-  v: 'red',
-  m: 'lightgreen',
-  u: '#222',
-  l: 'lightblue',
-  g: 'lightcoral',
-  x: 'gray',
-  '-': '#222',
-};
-
-const config = {
+const dagreConfig = {
   rankdir: 'TB',
 };
 
-const nodeConfig = ({ pos }) => (
-  {
-    labelStyle: `fill: ${colorMap[pos]}`,
-  }
-);
+const nodeConfig = (config, { postag }) => {
+  const color = getColor(config, postag);
 
-const configureNodes = (nodes) => (
+  if (color) {
+    return {
+      labelStyle: `fill: ${getColor(config, postag)}`,
+    };
+  }
+
+  return {};
+};
+
+const configureNodes = (config, nodes) => (
   nodes.map((node) => {
     // eslint-disable-next-line no-param-reassign
-    node.config = nodeConfig(node);
+    node.config = nodeConfig(config, node);
 
     return node;
   })
@@ -60,17 +50,17 @@ const configureLinks = (links) => (
 
 const Graph = () => (
   <TreebankContext.Consumer>
-    {({ sentence, setActive }) => {
+    {({ sentence, setActive, config }) => {
       const { nodes, links } = sentenceToGraph(sentence);
 
       return (
         <DagreGraph
-          nodes={configureNodes(nodes)}
+          nodes={configureNodes(config, nodes)}
           links={configureLinks(links)}
           fitBoundaries
           zoomable
           className={styles.graph}
-          config={config}
+          config={dagreConfig}
           onNodeClick={({ original: { _word } }) => setActive(_word)}
 
           height="600"

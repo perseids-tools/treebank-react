@@ -9,10 +9,6 @@ const xmlToJson = (xml) => {
   return json;
 };
 
-const extractPostag = (postag) => (
-  postag ? postag[0] : '-'
-);
-
 const sentenceToGraph = (sentence) => {
   const graph = { nodes: [{ id: '0', label: '[ROOT]' }], links: [] };
 
@@ -23,7 +19,7 @@ const sentenceToGraph = (sentence) => {
       },
     } = word;
     graph.nodes.push({
-      id, label: form, pos: extractPostag(postag), _word: word,
+      id, label: form, postag, _word: word,
     });
     graph.links.push({ source: head, target: id, label: relation });
   });
@@ -34,5 +30,4 @@ const sentenceToGraph = (sentence) => {
 export {
   xmlToJson,
   sentenceToGraph,
-  extractPostag,
 };

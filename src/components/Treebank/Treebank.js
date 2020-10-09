@@ -2,23 +2,32 @@ import React, { useState } from 'react';
 import { node, string } from 'prop-types';
 
 import { xmlToJson } from '../../lib/parsing';
+import { getConfig } from './config';
 
 import TreebankContext from './treebank-context';
 
-const getSentence = (treebank, chunk) => {
-  const treebankJson = xmlToJson(treebank);
+const sentenceFromJson = (treebankJson, chunk) => (
+  treebankJson.treebank.sentence.find(({ $ }) => $.id && $.id === chunk)
+);
 
-  return treebankJson.treebank.sentence.find(({ $ }) => $.id && $.id === chunk);
-};
+const configFromJson = (treebankJson) => (
+  getConfig(
+    treebankJson.treebank.$['xml:lang'],
+    treebankJson.treebank.$.format,
+  )
+);
 
 const Treebank = ({ treebank, chunk, children }) => {
   const [active, setActive] = useState(null);
-  const sentence = getSentence(treebank, chunk);
+  const treebankJson = xmlToJson(treebank);
+  const sentence = sentenceFromJson(treebankJson, chunk);
+  const config = configFromJson(treebankJson);
 
   return (
     <TreebankContext.Provider value={{
       sentence,
       chunk,
+      config,
       active,
       setActive,
     }}

@@ -1,0 +1,3 @@
+[submodule "vendor/arethusa-configs"]
+	path = vendor/arethusa-configs
+	url = https://github.com/alpheios-project/arethusa-configs.git
