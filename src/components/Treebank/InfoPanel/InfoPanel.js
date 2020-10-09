@@ -1,29 +1,29 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+import { deconstructPostag } from '../config';
 
 import TreebankContext from '../treebank-context';
 
+const renderPostag = (deconstructedPostag) => (
+  <dl>
+    {deconstructedPostag.map(([name, value]) => (
+      <Fragment key={name}>
+        <dt>{name}</dt>
+        <dd>{value}</dd>
+      </Fragment>
+    ))}
+  </dl>
+);
+
 const InfoPanel = () => (
   <TreebankContext.Consumer>
-    {({ active }) => {
+    {({ active, config }) => {
       if (active) {
-        const { $: { id, label, postag } } = active;
+        const { $: { postag } } = active;
 
         return (
           <div>
-            <ul>
-              <li>
-                id:
-                {id}
-              </li>
-              <li>
-                label:
-                {label}
-              </li>
-              <li>
-                pos:
-                {postag}
-              </li>
-            </ul>
+            {renderPostag(deconstructPostag(config, postag))}
           </div>
         );
       }

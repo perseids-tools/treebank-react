@@ -132,7 +132,32 @@ const getColor = (config, postag) => {
   return null;
 };
 
+const deconstructPostag = (config, postag) => {
+  const deconstructedPostag = [];
+
+  if (postag && config.plugins && config.plugins.morph) {
+    const { postagSchema, attributes } = config.plugins.morph;
+
+    postagSchema.forEach((type, index) => {
+      const attribute = attributes[type];
+      const name = attribute.long || attribute.short || type;
+      const values = Object.entries(attribute.values);
+      const match = values.find(([, { postag: abbreviation }]) => abbreviation === postag[index]);
+
+      if (match) {
+        deconstructedPostag.push([
+          name,
+          match[1].long || match[1].short || match[0],
+        ]);
+      }
+    });
+  }
+
+  return deconstructedPostag;
+};
+
 export {
   getConfig,
   getColor,
+  deconstructPostag,
 };
