@@ -7,11 +7,12 @@ import { getColor } from '../config';
 import TreebankContext from '../treebank-context';
 
 // eslint-disable-next-line react/prop-types
-const wordToSpan = (config, { $: { id, form, postag } }) => {
+const wordToSpan = (config, setActive, word) => {
+  const { $: { id, form, postag } } = word;
   const color = getColor(config, postag);
 
   return (
-    <span key={id} style={{ color }}>
+    <span onClick={() => setActive(word)} key={id} style={{ color }}>
       {form}
       {' '}
     </span>
@@ -20,10 +21,10 @@ const wordToSpan = (config, { $: { id, form, postag } }) => {
 
 const Sentence = () => (
   <TreebankContext.Consumer>
-    {({ sentence, config }) => (
+    {({ sentence, setActive, config }) => (
       <div className={styles.sentence}>
         <p>
-          {sentence.word.map((word) => wordToSpan(config, word))}
+          {sentence.word.map((word) => wordToSpan(config, setActive, word))}
         </p>
       </div>
     )}

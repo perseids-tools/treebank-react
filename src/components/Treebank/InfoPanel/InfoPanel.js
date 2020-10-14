@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 
+import styles from './InfoPanel.module.scss';
+
 import { deconstructPostag } from '../config';
 
 import TreebankContext from '../treebank-context';
@@ -22,7 +24,7 @@ const InfoPanel = () => (
         const { $: { postag } } = active;
 
         return (
-          <div>
+          <div className={styles.infoPanel}>
             {renderPostag(deconstructPostag(config, postag))}
           </div>
         );
