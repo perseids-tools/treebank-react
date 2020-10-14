@@ -6,26 +6,32 @@ import { deconstructPostag } from '../config';
 
 import TreebankContext from '../treebank-context';
 
-const renderPostag = (deconstructedPostag) => (
-  <dl>
-    {deconstructedPostag.map(([name, value]) => (
-      <Fragment key={name}>
-        <dt>{name}</dt>
-        <dd>{value}</dd>
-      </Fragment>
-    ))}
-  </dl>
+const renderLemma = (lemma) => (
+  <>
+    <dt>Lemma</dt>
+    <dd>{lemma}</dd>
+  </>
+);
+
+const renderPostag = ([name, value]) => (
+  <Fragment key={name}>
+    <dt>{name}</dt>
+    <dd>{value}</dd>
+  </Fragment>
 );
 
 const InfoPanel = () => (
   <TreebankContext.Consumer>
     {({ active, config }) => {
       if (active) {
-        const { $: { postag } } = active;
+        const { $: { postag, lemma } } = active;
 
         return (
           <div className={styles.infoPanel}>
-            {renderPostag(deconstructPostag(config, postag))}
+            <dl>
+              {renderLemma(lemma)}
+              {deconstructPostag(config, postag).map(renderPostag)}
+            </dl>
           </div>
         );
       }
