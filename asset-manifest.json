@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/treebank-react/static/css/main.7d12b472.chunk.css",
-    "main.js": "/treebank-react/static/js/main.ab526525.chunk.js",
-    "main.js.map": "/treebank-react/static/js/main.ab526525.chunk.js.map",
+    "main.js": "/treebank-react/static/js/main.eb462e8d.chunk.js",
+    "main.js.map": "/treebank-react/static/js/main.eb462e8d.chunk.js.map",
     "runtime-main.js": "/treebank-react/static/js/runtime-main.9d939367.js",
     "runtime-main.js.map": "/treebank-react/static/js/runtime-main.9d939367.js.map",
     "static/js/2.0601cf32.chunk.js": "/treebank-react/static/js/2.0601cf32.chunk.js",
     "static/js/2.0601cf32.chunk.js.map": "/treebank-react/static/js/2.0601cf32.chunk.js.map",
     "index.html": "/treebank-react/index.html",
-    "precache-manifest.aa4d179537d4d3ba4621d2f4e2f577c3.js": "/treebank-react/precache-manifest.aa4d179537d4d3ba4621d2f4e2f577c3.js",
+    "precache-manifest.9900c92964e3ae149f986dfbf3722f84.js": "/treebank-react/precache-manifest.9900c92964e3ae149f986dfbf3722f84.js",
     "service-worker.js": "/treebank-react/service-worker.js",
     "static/css/main.7d12b472.chunk.css.map": "/treebank-react/static/css/main.7d12b472.chunk.css.map",
     "static/js/2.0601cf32.chunk.js.LICENSE.txt": "/treebank-react/static/js/2.0601cf32.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9d939367.js",
     "static/js/2.0601cf32.chunk.js",
     "static/css/main.7d12b472.chunk.css",
-    "static/js/main.ab526525.chunk.js"
+    "static/js/main.eb462e8d.chunk.js"
   ]
 }
