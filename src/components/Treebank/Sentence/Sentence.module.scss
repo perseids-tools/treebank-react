@@ -8,3 +8,15 @@
 
   margin-bottom: 0.2rem;
 }
+
+.word {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5BC8DC;
+  }
+}
+
+.active {
+  background-color: rgb(246, 217, 24);
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DagreGraph from 'dagre-d3-react';
 import { curveBasis } from 'd3-shape';
 
@@ -13,22 +13,22 @@ const dagreConfig = {
   rankdir: 'TB',
 };
 
-const nodeConfig = (config, { postag }) => {
+const nodeConfig = (config, active, { id, postag }) => {
   const color = getColor(config, postag);
+  const isActive = active && active.$.id === id;
+  const className = isActive ? [styles.node, styles.active].join(' ') : styles.node;
 
-  if (color) {
-    return {
-      labelStyle: `fill: ${getColor(config, postag)}`,
-    };
-  }
-
-  return {};
+  return {
+    labelStyle: `color: ${color}`,
+    labelType: 'html',
+    class: className,
+  };
 };
 
-const configureNodes = (config, nodes) => (
+const configureNodes = (config, active, nodes) => (
   nodes.map((node) => {
     // eslint-disable-next-line no-param-reassign
-    node.config = nodeConfig(config, node);
+    node.config = nodeConfig(config, active, node);
 
     return node;
   })
@@ -48,27 +48,44 @@ const configureLinks = (links) => (
   })
 );
 
-const Graph = () => (
-  <TreebankContext.Consumer>
-    {({ sentence, setActive, config }) => {
-      const { nodes, links } = sentenceToGraph(sentence);
+let previousSentence = null;
+const Graph = () => {
+  const [render, setRender] = useState(true);
 
-      return (
-        <DagreGraph
-          nodes={configureNodes(config, nodes)}
-          links={configureLinks(links)}
-          fitBoundaries
-          zoomable
-          className={styles.graph}
-          config={dagreConfig}
-          onNodeClick={({ original: { _word } }) => setActive(_word)}
+  return (
+    <TreebankContext.Consumer>
+      {({
+        sentence, active, setActive, config,
+      }) => {
+        const { nodes, links } = sentenceToGraph(sentence);
 
-          height="600"
-          width="1000"
-        />
-      );
-    }}
-  </TreebankContext.Consumer>
-);
+        // TODO this is a workaround for a re-rendering issue in the Dagre D3 React library.
+        // It's only here to get the demo working!
+        // In the future, we will use a custom Dagre D3 wrapper instead of the library.
+        if (previousSentence !== sentence) {
+          previousSentence = sentence;
+          setRender(!render);
+
+          return <div />;
+        }
+
+        return (
+          <DagreGraph
+            nodes={configureNodes(config, active, nodes)}
+            links={configureLinks(links)}
+            fitBoundaries
+            zoomable
+            className={styles.graph}
+            config={dagreConfig}
+            onNodeClick={({ original: { _word } }) => setActive(_word)}
+
+            height="600"
+            width="1000"
+          />
+        );
+      }}
+    </TreebankContext.Consumer>
+  );
+};
 
 export default Graph;
