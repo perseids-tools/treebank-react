@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/arethusa-react/static/css/main.b928946e.chunk.css",
-    "main.js": "/arethusa-react/static/js/main.7bb6cd67.chunk.js",
-    "main.js.map": "/arethusa-react/static/js/main.7bb6cd67.chunk.js.map",
-    "runtime-main.js": "/arethusa-react/static/js/runtime-main.c0097628.js",
-    "runtime-main.js.map": "/arethusa-react/static/js/runtime-main.c0097628.js.map",
-    "static/js/2.b161e444.chunk.js": "/arethusa-react/static/js/2.b161e444.chunk.js",
-    "static/js/2.b161e444.chunk.js.map": "/arethusa-react/static/js/2.b161e444.chunk.js.map",
-    "index.html": "/arethusa-react/index.html",
-    "precache-manifest.3a6604ec6658211f418542665c6e372f.js": "/arethusa-react/precache-manifest.3a6604ec6658211f418542665c6e372f.js",
-    "service-worker.js": "/arethusa-react/service-worker.js",
-    "static/css/main.b928946e.chunk.css.map": "/arethusa-react/static/css/main.b928946e.chunk.css.map",
-    "static/js/2.b161e444.chunk.js.LICENSE.txt": "/arethusa-react/static/js/2.b161e444.chunk.js.LICENSE.txt"
+    "main.css": "/treebank-react/static/css/main.7d12b472.chunk.css",
+    "main.js": "/treebank-react/static/js/main.ab526525.chunk.js",
+    "main.js.map": "/treebank-react/static/js/main.ab526525.chunk.js.map",
+    "runtime-main.js": "/treebank-react/static/js/runtime-main.9d939367.js",
+    "runtime-main.js.map": "/treebank-react/static/js/runtime-main.9d939367.js.map",
+    "static/js/2.0601cf32.chunk.js": "/treebank-react/static/js/2.0601cf32.chunk.js",
+    "static/js/2.0601cf32.chunk.js.map": "/treebank-react/static/js/2.0601cf32.chunk.js.map",
+    "index.html": "/treebank-react/index.html",
+    "precache-manifest.e770a996b7e3a47351c9c241ad8523ce.js": "/treebank-react/precache-manifest.e770a996b7e3a47351c9c241ad8523ce.js",
+    "service-worker.js": "/treebank-react/service-worker.js",
+    "static/css/main.7d12b472.chunk.css.map": "/treebank-react/static/css/main.7d12b472.chunk.css.map",
+    "static/js/2.0601cf32.chunk.js.LICENSE.txt": "/treebank-react/static/js/2.0601cf32.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c0097628.js",
-    "static/js/2.b161e444.chunk.js",
-    "static/css/main.b928946e.chunk.css",
-    "static/js/main.7bb6cd67.chunk.js"
+    "static/js/runtime-main.9d939367.js",
+    "static/js/2.0601cf32.chunk.js",
+    "static/css/main.7d12b472.chunk.css",
+    "static/js/main.ab526525.chunk.js"
   ]
 }
