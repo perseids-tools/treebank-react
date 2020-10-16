@@ -1,3 +1,3 @@
-import Sentence from './Sentence';
+import { SentenceConsumer } from './Sentence';
 
-export default Sentence;
+export default SentenceConsumer;

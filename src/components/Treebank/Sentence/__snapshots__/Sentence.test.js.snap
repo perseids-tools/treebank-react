@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a sentence 1`] = `
+<div
+  className="sentence"
+>
+  <p>
+    <span
+      className="word"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+    >
+      Ἡροδότου
+    </span>
+     
+  </p>
+</div>
+`;

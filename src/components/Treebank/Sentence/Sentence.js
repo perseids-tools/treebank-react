@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { object, func } from 'prop-types';
 
 import styles from './Sentence.module.scss';
 
@@ -27,18 +28,47 @@ const wordToSpan = (config, active, setActive, word) => {
   );
 };
 
-const Sentence = () => (
+const Sentence = ({
+  sentence, active, setActive, config,
+}) => (
+  <div className={styles.sentence}>
+    <p>
+      {sentence.word.map((word) => wordToSpan(config, active, setActive, word))}
+    </p>
+  </div>
+);
+
+Sentence.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  sentence: object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  active: object,
+  setActive: func,
+  // eslint-disable-next-line react/forbid-prop-types
+  config: object.isRequired,
+};
+
+Sentence.defaultProps = {
+  active: null,
+  setActive: () => {},
+};
+
+const SentenceConsumer = () => (
   <TreebankContext.Consumer>
     {({
       sentence, active, setActive, config,
     }) => (
-      <div className={styles.sentence}>
-        <p>
-          {sentence.word.map((word) => wordToSpan(config, active, setActive, word))}
-        </p>
-      </div>
+      <Sentence
+        sentence={sentence}
+        active={active}
+        setActive={setActive}
+        config={config}
+      />
     )}
   </TreebankContext.Consumer>
 );
 
-export default Sentence;
+export {
+  Sentence,
+  SentenceConsumer,
+};
