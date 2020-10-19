@@ -1,0 +1,286 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a sentence as XML 1`] = `
+Array [
+  <span
+    className="bracket"
+  >
+    
+    &lt;
+  </span>,
+  <span
+    className="element"
+  >
+    sentence
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    id
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    1
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    document_id
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    test
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    subdoc
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    2
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    span
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    
+    "
+  </span>,
+  "",
+  <span
+    className="bracket"
+  >
+    &gt;
+  </span>,
+  <br />,
+  <span
+    className="bracket"
+  >
+        
+    &lt;
+  </span>,
+  <span
+    className="element"
+  >
+    word
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    id
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    1
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    form
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    οὐκ
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    postag
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    d--------
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    relation
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    AuxZ
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    head
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    1
+    "
+  </span>,
+  " /",
+  <span
+    className="bracket"
+  >
+    &gt;
+  </span>,
+  <br />,
+  <span
+    className="bracket"
+  >
+        
+    &lt;
+  </span>,
+  <span
+    className="element"
+  >
+    word
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    id
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    2
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    form
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    ᾔδη
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    lemma
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    οἶδα
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    postag
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    v1slia---
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    relation
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    PRED
+    "
+  </span>,
+  " ",
+  <span
+    className="attribute"
+  >
+    head
+    =
+  </span>,
+  <span
+    className="attributeText"
+  >
+    "
+    0
+    "
+  </span>,
+  " /",
+  <span
+    className="bracket"
+  >
+    &gt;
+  </span>,
+  <br />,
+  <span
+    className="bracket"
+  >
+    &lt;
+  </span>,
+  <span
+    className="element"
+  >
+    /
+    sentence
+  </span>,
+  <span
+    className="bracket"
+  >
+    &gt;
+  </span>,
+]
+`;
