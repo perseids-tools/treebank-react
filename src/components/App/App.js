@@ -4,7 +4,7 @@ import Treebank from '../Treebank';
 import Sentence from '../Treebank/Sentence';
 import Graph from '../Treebank/Graph';
 import InfoPanel from '../Treebank/InfoPanel';
-import XmlPanel from '../Treebank/XmlPanel';
+import Xml from '../Treebank/Xml';
 
 const initialXml = '<treebank xml:lang="grc" format="aldt" version="1.5">\n'
   + '   <date>Thu Aug 21 19:31:06 +0000 2014</date>\n'
@@ -71,7 +71,7 @@ const App = () => {
         <Sentence />
         <Graph />
         <InfoPanel />
-        <XmlPanel />
+        <Xml />
       </Treebank>
       <br />
       <textarea rows={30} cols={135} value={xml} onChange={handleChange} />

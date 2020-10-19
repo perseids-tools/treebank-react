@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import styles from './XmlPanel.module.scss';
+import { sentenceType } from '../../types';
 
-import TreebankContext from '../treebank-context';
+import styles from './Xml.module.scss';
 
 const attributesToJsx = (attributes) => (
   Object.entries(attributes).map(([key, value]) => (
@@ -46,7 +46,7 @@ const closingTag = (name, key) => (
   </Fragment>
 );
 
-const sentenceToJsx = (sentence) => (
+const Xml = ({ sentence }) => (
   <>
     {openingTag('sentence', sentence.$, 'sentence')}
     {sentence.word.map((word) => (
@@ -56,10 +56,8 @@ const sentenceToJsx = (sentence) => (
   </>
 );
 
-const XmlPanel = () => (
-  <TreebankContext.Consumer>
-    {({ sentence }) => sentenceToJsx(sentence)}
-  </TreebankContext.Consumer>
-);
+Xml.propTypes = {
+  sentence: sentenceType.isRequired,
+};
 
-export default XmlPanel;
+export default Xml;
