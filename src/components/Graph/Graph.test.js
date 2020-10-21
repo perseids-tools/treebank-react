@@ -13,7 +13,7 @@ it('renders a sentence', () => {
     word: [
       {
         $: {
-          id: '1', form: 'οὐκ', postag: 'd--------', relation: 'AuxZ', head: '1',
+          id: '1', form: 'οὐκ', lemma: 'οὐ', postag: 'd--------', relation: 'AuxZ', head: '1',
         },
       },
       {

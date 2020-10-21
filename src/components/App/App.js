@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Treebank from '../Treebank';
 import Sentence from '../Treebank/Sentence';
 import Graph from '../Treebank/Graph';
-import InfoPanel from '../Treebank/InfoPanel';
+import Information from '../Treebank/Information';
 import Xml from '../Treebank/Xml';
 
 const initialXml = '<treebank xml:lang="grc" format="aldt" version="1.5">\n'
@@ -70,7 +70,7 @@ const App = () => {
       <Treebank treebank={xml} chunk="1">
         <Sentence />
         <Graph />
-        <InfoPanel />
+        <Information />
         <Xml />
       </Treebank>
       <br />

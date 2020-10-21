@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a sentence 1`] = `
+<div
+  className="information"
+>
+  <dl>
+    <dt>
+      Lemma
+    </dt>
+    <dd>
+      δικαστής
+    </dd>
+    <dt>
+      Part of Speech
+    </dt>
+    <dd>
+      noun
+    </dd>
+    <dt>
+      Number
+    </dt>
+    <dd>
+      plural
+    </dd>
+    <dt>
+      gender
+    </dt>
+    <dd>
+      masculine
+    </dd>
+    <dt>
+      Casus
+    </dt>
+    <dd>
+      accusative
+    </dd>
+  </dl>
+</div>
+`;
