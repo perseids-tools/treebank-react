@@ -1,3 +1,24 @@
+.xml {
+  background-color: rgb(242, 242, 242);
+
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.word {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5BC8DC;
+  }
+}
+
+.active {
+  background-color: rgb(246, 217, 24);
+}
+
 .bracket {
   color: rgb(0, 0, 255);
 }

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
+import { func } from 'prop-types';
 
-import { sentenceType } from '../../types';
+import { sentenceType, wordType } from '../../types';
 
 import styles from './Xml.module.scss';
 
@@ -46,18 +47,41 @@ const closingTag = (name, key) => (
   </Fragment>
 );
 
-const Xml = ({ sentence }) => (
-  <>
+const renderWord = (word, active, setActive) => {
+  const { $: { id } } = word;
+  const isActive = active && active.$.id === id;
+  const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
+
+  return (
+    <div
+      key={id}
+      className={className}
+      onClick={() => setActive(word)}
+    >
+      {openingTag('word', word.$, id, true, <>&nbsp;&nbsp;&nbsp;&nbsp;</>)}
+    </div>
+  );
+};
+
+const Xml = ({ sentence, active, setActive }) => (
+  <div className={styles.xml}>
     {openingTag('sentence', sentence.$, 'sentence')}
     {sentence.word.map((word) => (
-      openingTag('word', word.$, word.$.id, true, <>&nbsp;&nbsp;&nbsp;&nbsp;</>)
+      renderWord(word, active, setActive)
     ))}
     {closingTag('sentence', 'sentence-close')}
-  </>
+  </div>
 );
 
 Xml.propTypes = {
   sentence: sentenceType.isRequired,
+  active: wordType,
+  setActive: func,
+};
+
+Xml.defaultProps = {
+  active: null,
+  setActive: () => {},
 };
 
 export default Xml;
