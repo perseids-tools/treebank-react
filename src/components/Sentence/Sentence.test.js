@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { getConfig } from '../config';
+import { getConfig } from '../Treebank/config';
 
-import { Sentence } from './Sentence';
+import Sentence from './Sentence';
 
 it('renders a sentence', () => {
   const component = (
