@@ -71,7 +71,7 @@ const App = () => {
 
   return (
     <div className={styles.treebank}>
-      <Treebank treebank={xml} chunk="1">
+      <Treebank treebank={xml} id="1">
         <Text />
         <Graph />
         <Information />

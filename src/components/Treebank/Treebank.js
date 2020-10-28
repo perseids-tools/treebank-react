@@ -8,8 +8,8 @@ import { getConfig } from './config';
 
 import TreebankContext from './treebank-context';
 
-const sentenceFromJson = (treebankJson, chunk) => (
-  treebankJson.treebank.sentence.find(({ $ }) => $.id && $.id === chunk)
+const sentenceFromJson = (treebankJson, id) => (
+  treebankJson.treebank.sentence.find(({ $ }) => $.id && $.id === id)
 );
 
 const configFromJson = (treebankJson) => (
@@ -19,10 +19,10 @@ const configFromJson = (treebankJson) => (
   )
 );
 
-const Treebank = ({ treebank, chunk, children }) => {
+const Treebank = ({ treebank, id, children }) => {
   const [active, setActive] = useState(null);
   const treebankJson = xmlToJson(treebank);
-  const sentence = sentenceFromJson(treebankJson, chunk);
+  const sentence = sentenceFromJson(treebankJson, id);
   const config = configFromJson(treebankJson);
 
   const toggleActive = (word) => {
@@ -36,7 +36,6 @@ const Treebank = ({ treebank, chunk, children }) => {
   return (
     <TreebankContext.Provider value={{
       sentence,
-      chunk,
       config,
       active,
       toggleActive,
@@ -51,7 +50,7 @@ const Treebank = ({ treebank, chunk, children }) => {
 
 Treebank.propTypes = {
   treebank: string.isRequired,
-  chunk: string.isRequired,
+  id: string.isRequired,
   children: node,
 };
 
