@@ -8,6 +8,8 @@ import Graph from '../Treebank/Graph';
 import Information from '../Treebank/Information';
 import Xml from '../Treebank/Xml';
 
+import Collapse from '../Collapse';
+
 const initialXml = '<treebank xml:lang="grc" format="aldt" version="1.5">\n'
   + '   <date>Thu Aug 21 19:31:06 +0000 2014</date>\n'
   + '   <annotator>\n'
@@ -71,9 +73,11 @@ const App = () => {
     <div className={styles.treebank}>
       <Treebank treebank={xml} chunk="1">
         <Sentence />
-        <Information />
         <Graph />
-        <Xml />
+        <Information />
+        <Collapse title="XML">
+          <Xml />
+        </Collapse>
       </Treebank>
       <br />
       <textarea rows={30} cols={135} value={xml} onChange={handleChange} />
