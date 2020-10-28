@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/treebank-react/static/css/main.1c008a10.chunk.css",
-    "main.js": "/treebank-react/static/js/main.f71c4b07.chunk.js",
-    "main.js.map": "/treebank-react/static/js/main.f71c4b07.chunk.js.map",
+    "main.css": "/treebank-react/static/css/main.e7fd501b.chunk.css",
+    "main.js": "/treebank-react/static/js/main.521b3f78.chunk.js",
+    "main.js.map": "/treebank-react/static/js/main.521b3f78.chunk.js.map",
     "runtime-main.js": "/treebank-react/static/js/runtime-main.9d939367.js",
     "runtime-main.js.map": "/treebank-react/static/js/runtime-main.9d939367.js.map",
-    "static/js/2.3b81e7a7.chunk.js": "/treebank-react/static/js/2.3b81e7a7.chunk.js",
-    "static/js/2.3b81e7a7.chunk.js.map": "/treebank-react/static/js/2.3b81e7a7.chunk.js.map",
+    "static/js/2.fb12f61f.chunk.js": "/treebank-react/static/js/2.fb12f61f.chunk.js",
+    "static/js/2.fb12f61f.chunk.js.map": "/treebank-react/static/js/2.fb12f61f.chunk.js.map",
     "index.html": "/treebank-react/index.html",
-    "precache-manifest.c7bee4d4499b8ca5367938ff1d03a7f4.js": "/treebank-react/precache-manifest.c7bee4d4499b8ca5367938ff1d03a7f4.js",
+    "precache-manifest.2559d8803ad7d8ae3981f29eee304482.js": "/treebank-react/precache-manifest.2559d8803ad7d8ae3981f29eee304482.js",
     "service-worker.js": "/treebank-react/service-worker.js",
-    "static/css/main.1c008a10.chunk.css.map": "/treebank-react/static/css/main.1c008a10.chunk.css.map",
-    "static/js/2.3b81e7a7.chunk.js.LICENSE.txt": "/treebank-react/static/js/2.3b81e7a7.chunk.js.LICENSE.txt"
+    "static/css/main.e7fd501b.chunk.css.map": "/treebank-react/static/css/main.e7fd501b.chunk.css.map",
+    "static/js/2.fb12f61f.chunk.js.LICENSE.txt": "/treebank-react/static/js/2.fb12f61f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9d939367.js",
-    "static/js/2.3b81e7a7.chunk.js",
-    "static/css/main.1c008a10.chunk.css",
-    "static/js/main.f71c4b07.chunk.js"
+    "static/js/2.fb12f61f.chunk.js",
+    "static/css/main.e7fd501b.chunk.css",
+    "static/js/main.521b3f78.chunk.js"
   ]
 }
