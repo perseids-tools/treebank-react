@@ -3,8 +3,6 @@
 exports[`renders a sentence 1`] = `
 <svg
   className="graph"
-  height="600"
-  width="1000"
 >
   <g />
 </svg>

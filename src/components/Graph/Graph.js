@@ -62,9 +62,6 @@ const Graph = ({
       className={styles.graph}
       config={dagreConfig}
       onNodeClick={({ original: { _word } }) => setActive(_word)}
-
-      height="600"
-      width="1000"
     />
   );
 };
