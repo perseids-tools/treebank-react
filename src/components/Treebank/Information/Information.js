@@ -1,13 +1,13 @@
 import React from 'react';
 
-import TreebankContext from '../treebank-context';
+import SentenceContext from '../sentence-context';
 
 import Information from '../../Information';
 
 const InformationWithContext = () => (
-  <TreebankContext.Consumer>
+  <SentenceContext.Consumer>
     {({ active, config }) => <Information active={active} config={config} />}
-  </TreebankContext.Consumer>
+  </SentenceContext.Consumer>
 );
 
 export default InformationWithContext;

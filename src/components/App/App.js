@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styles from './App.module.scss';
 
 import Treebank from '../Treebank';
+import Sentence from '../Treebank/Sentence';
 import Text from '../Treebank/Text';
 import Graph from '../Treebank/Graph';
 import Information from '../Treebank/Information';
@@ -71,13 +72,15 @@ const App = () => {
 
   return (
     <div className={styles.treebank}>
-      <Treebank treebank={xml} id="1">
-        <Text />
-        <Graph />
-        <Information />
-        <Collapse title="XML">
-          <Xml />
-        </Collapse>
+      <Treebank treebank={xml}>
+        <Sentence id="1">
+          <Text />
+          <Graph />
+          <Information />
+          <Collapse title="XML">
+            <Xml />
+          </Collapse>
+        </Sentence>
       </Treebank>
       <br />
       <textarea rows={30} cols={135} value={xml} onChange={handleChange} />

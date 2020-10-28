@@ -1,15 +1,15 @@
 import React from 'react';
 
-import TreebankContext from '../treebank-context';
+import SentenceContext from '../sentence-context';
 
 import Graph from '../../Graph';
 
 const GraphWithContext = () => (
-  <TreebankContext.Consumer>
+  <SentenceContext.Consumer>
     {({
       sentence, active, toggleActive, config,
     }) => <Graph sentence={sentence} active={active} toggleActive={toggleActive} config={config} />}
-  </TreebankContext.Consumer>
+  </SentenceContext.Consumer>
 );
 
 export default GraphWithContext;

@@ -1,17 +1,17 @@
 import React from 'react';
 
-import TreebankContext from '../treebank-context';
+import SentenceContext from '../sentence-context';
 
 import Text from '../../Text';
 
 const TextWithContext = () => (
-  <TreebankContext.Consumer>
+  <SentenceContext.Consumer>
     {({
       sentence, active, toggleActive, config,
     }) => (
       <Text sentence={sentence} active={active} toggleActive={toggleActive} config={config} />
     )}
-  </TreebankContext.Consumer>
+  </SentenceContext.Consumer>
 );
 
 export default TextWithContext;

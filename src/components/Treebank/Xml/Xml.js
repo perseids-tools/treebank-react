@@ -1,15 +1,15 @@
 import React from 'react';
 
-import TreebankContext from '../treebank-context';
+import SentenceContext from '../sentence-context';
 
 import Xml from '../../Xml';
 
 const XmlWithContext = () => (
-  <TreebankContext.Consumer>
+  <SentenceContext.Consumer>
     {({ sentence, active, toggleActive }) => (
       <Xml sentence={sentence} active={active} toggleActive={toggleActive} />
     )}
-  </TreebankContext.Consumer>
+  </SentenceContext.Consumer>
 );
 
 export default XmlWithContext;
