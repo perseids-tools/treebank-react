@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { node, string } from 'prop-types';
 
+import styles from './Treebank.module.scss';
+
 import { xmlToJson } from '../../lib/parsing';
 import { getConfig } from './config';
 
@@ -32,7 +34,9 @@ const Treebank = ({ treebank, chunk, children }) => {
       setActive,
     }}
     >
-      {children}
+      <div className={styles.container}>
+        {children}
+      </div>
     </TreebankContext.Provider>
   );
 };

@@ -1,10 +1,14 @@
 .xml {
   background-color: rgb(242, 242, 242);
+  overflow-x: scroll;
+  white-space: nowrap;
 
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
   padding-left: 0.4rem;
   padding-right: 0.4rem;
+
+  margin-bottom: 0.2rem;
 }
 
 .word {

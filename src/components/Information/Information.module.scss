@@ -5,4 +5,31 @@
   padding-bottom: 0.2rem;
   padding-left: 0.4rem;
   padding-right: 0.4rem;
+
+  margin-bottom: 0.2rem;
+}
+
+.dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container {
+  margin-right: 7px;
+  margin-left: 7px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.dt {
+  font-weight: bold;
+  font-variant: small-caps;
+  margin: 0;
+  padding: 0;
+}
+
+.dd {
+  text-transform: lowercase;
+  margin: 0;
+  padding: 0;
 }

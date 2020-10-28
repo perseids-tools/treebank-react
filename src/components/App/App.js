@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import styles from './App.module.scss';
+
 import Treebank from '../Treebank';
 import Sentence from '../Treebank/Sentence';
 import Graph from '../Treebank/Graph';
@@ -66,16 +68,16 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className={styles.treebank}>
       <Treebank treebank={xml} chunk="1">
         <Sentence />
-        <Graph />
         <Information />
+        <Graph />
         <Xml />
       </Treebank>
       <br />
       <textarea rows={30} cols={135} value={xml} onChange={handleChange} />
-    </>
+    </div>
   );
 };
 
