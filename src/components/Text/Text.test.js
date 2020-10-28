@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 
 import { getConfig } from '../Treebank/config';
 
-import Sentence from './Sentence';
+import Text from './Text';
 
 it('renders a sentence', () => {
   const component = (
-    <Sentence
+    <Text
       sentence={{ word: [{ $: { id: '1', form: 'Ἡροδότου', postag: 'n-s---mg-' } }] }}
       active={null}
       toggleActive={() => {}}

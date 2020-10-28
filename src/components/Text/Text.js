@@ -3,7 +3,7 @@ import { object, func } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
 
-import styles from './Sentence.module.scss';
+import styles from './Text.module.scss';
 
 import { getColor } from '../Treebank/config';
 
@@ -28,7 +28,7 @@ const wordToSpan = (config, active, toggleActive, word) => {
   );
 };
 
-const Sentence = ({
+const Text = ({
   sentence, active, toggleActive, config,
 }) => (
   <div className={styles.sentence}>
@@ -38,7 +38,7 @@ const Sentence = ({
   </div>
 );
 
-Sentence.propTypes = {
+Text.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
   toggleActive: func,
@@ -46,9 +46,9 @@ Sentence.propTypes = {
   config: object.isRequired,
 };
 
-Sentence.defaultProps = {
+Text.defaultProps = {
   active: null,
   toggleActive: () => {},
 };
 
-export default Sentence;
+export default Text;

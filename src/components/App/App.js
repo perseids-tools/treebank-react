@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './App.module.scss';
 
 import Treebank from '../Treebank';
-import Sentence from '../Treebank/Sentence';
+import Text from '../Treebank/Text';
 import Graph from '../Treebank/Graph';
 import Information from '../Treebank/Information';
 import Xml from '../Treebank/Xml';
@@ -72,7 +72,7 @@ const App = () => {
   return (
     <div className={styles.treebank}>
       <Treebank treebank={xml} chunk="1">
-        <Sentence />
+        <Text />
         <Graph />
         <Information />
         <Collapse title="XML">
