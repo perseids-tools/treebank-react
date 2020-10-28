@@ -10,7 +10,7 @@ it('renders a sentence', () => {
     <Sentence
       sentence={{ word: [{ $: { id: '1', form: 'Ἡροδότου', postag: 'n-s---mg-' } }] }}
       active={null}
-      setActive={() => {}}
+      toggleActive={() => {}}
       config={getConfig('aldt', 'grc')}
     />
   );

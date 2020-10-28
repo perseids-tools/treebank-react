@@ -7,9 +7,9 @@ import Sentence from '../../Sentence';
 const SentenceWithContext = () => (
   <TreebankContext.Consumer>
     {({
-      sentence, active, setActive, config,
+      sentence, active, toggleActive, config,
     }) => (
-      <Sentence sentence={sentence} active={active} setActive={setActive} config={config} />
+      <Sentence sentence={sentence} active={active} toggleActive={toggleActive} config={config} />
     )}
   </TreebankContext.Consumer>
 );

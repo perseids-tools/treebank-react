@@ -7,8 +7,8 @@ import Graph from '../../Graph';
 const GraphWithContext = () => (
   <TreebankContext.Consumer>
     {({
-      sentence, active, setActive, config,
-    }) => <Graph sentence={sentence} active={active} setActive={setActive} config={config} />}
+      sentence, active, toggleActive, config,
+    }) => <Graph sentence={sentence} active={active} toggleActive={toggleActive} config={config} />}
   </TreebankContext.Consumer>
 );
 

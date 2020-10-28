@@ -47,7 +47,7 @@ const closingTag = (name, key) => (
   </Fragment>
 );
 
-const renderWord = (word, active, setActive) => {
+const renderWord = (word, active, toggleActive) => {
   const { $: { id } } = word;
   const isActive = active && active.$.id === id;
   const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
@@ -56,18 +56,18 @@ const renderWord = (word, active, setActive) => {
     <div
       key={id}
       className={className}
-      onClick={() => setActive(word)}
+      onClick={() => toggleActive(word)}
     >
       {openingTag('word', word.$, id, true, <>&nbsp;&nbsp;&nbsp;&nbsp;</>)}
     </div>
   );
 };
 
-const Xml = ({ sentence, active, setActive }) => (
+const Xml = ({ sentence, active, toggleActive }) => (
   <div className={styles.xml}>
     {openingTag('sentence', sentence.$, 'sentence')}
     {sentence.word.map((word) => (
-      renderWord(word, active, setActive)
+      renderWord(word, active, toggleActive)
     ))}
     {closingTag('sentence', 'sentence-close')}
   </div>
@@ -76,12 +76,12 @@ const Xml = ({ sentence, active, setActive }) => (
 Xml.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
-  setActive: func,
+  toggleActive: func,
 };
 
 Xml.defaultProps = {
   active: null,
-  setActive: () => {},
+  toggleActive: () => {},
 };
 
 export default Xml;

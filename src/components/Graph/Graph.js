@@ -50,7 +50,7 @@ const configureLinks = (links) => (
 );
 
 const Graph = ({
-  sentence, active, setActive, config,
+  sentence, active, toggleActive, config,
 }) => {
   const { nodes, links } = sentenceToGraph(sentence);
 
@@ -61,7 +61,7 @@ const Graph = ({
       zoomable
       className={styles.graph}
       config={dagreConfig}
-      onNodeClick={({ original: { _word } }) => setActive(_word)}
+      onNodeClick={({ original: { _word } }) => toggleActive(_word)}
     />
   );
 };
@@ -69,7 +69,7 @@ const Graph = ({
 Graph.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
-  setActive: func.isRequired,
+  toggleActive: func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   config: object.isRequired,
 };

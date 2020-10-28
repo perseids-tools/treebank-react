@@ -6,8 +6,8 @@ import Xml from '../../Xml';
 
 const XmlWithContext = () => (
   <TreebankContext.Consumer>
-    {({ sentence, active, setActive }) => (
-      <Xml sentence={sentence} active={active} setActive={setActive} />
+    {({ sentence, active, toggleActive }) => (
+      <Xml sentence={sentence} active={active} toggleActive={toggleActive} />
     )}
   </TreebankContext.Consumer>
 );

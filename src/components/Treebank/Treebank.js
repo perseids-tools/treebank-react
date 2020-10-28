@@ -25,13 +25,21 @@ const Treebank = ({ treebank, chunk, children }) => {
   const sentence = sentenceFromJson(treebankJson, chunk);
   const config = configFromJson(treebankJson);
 
+  const toggleActive = (word) => {
+    if (word && active && word.$.id === active.$.id) {
+      setActive(null);
+    } else {
+      setActive(word);
+    }
+  };
+
   return (
     <TreebankContext.Provider value={{
       sentence,
       chunk,
       config,
       active,
-      setActive,
+      toggleActive,
     }}
     >
       <div className={styles.container}>

@@ -28,7 +28,7 @@ it('renders a sentence', () => {
     <Graph
       sentence={sentence}
       active={null}
-      setActive={() => {}}
+      toggleActive={() => {}}
       config={getConfig('aldt', 'grc')}
     />
   );

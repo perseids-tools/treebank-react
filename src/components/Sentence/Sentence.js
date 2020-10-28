@@ -8,7 +8,7 @@ import styles from './Sentence.module.scss';
 import { getColor } from '../Treebank/config';
 
 // eslint-disable-next-line react/prop-types
-const wordToSpan = (config, active, setActive, word) => {
+const wordToSpan = (config, active, toggleActive, word) => {
   const { $: { id, form, postag } } = word;
   const color = getColor(config, postag);
   const isActive = active && active.$.id === id;
@@ -17,7 +17,7 @@ const wordToSpan = (config, active, setActive, word) => {
   return (
     <Fragment key={id}>
       <span
-        onClick={() => setActive(word)}
+        onClick={() => toggleActive(word)}
         className={className}
         style={{ color }}
       >
@@ -29,11 +29,11 @@ const wordToSpan = (config, active, setActive, word) => {
 };
 
 const Sentence = ({
-  sentence, active, setActive, config,
+  sentence, active, toggleActive, config,
 }) => (
   <div className={styles.sentence}>
     <p>
-      {sentence.word.map((word) => wordToSpan(config, active, setActive, word))}
+      {sentence.word.map((word) => wordToSpan(config, active, toggleActive, word))}
     </p>
   </div>
 );
@@ -41,14 +41,14 @@ const Sentence = ({
 Sentence.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
-  setActive: func,
+  toggleActive: func,
   // eslint-disable-next-line react/forbid-prop-types
   config: object.isRequired,
 };
 
 Sentence.defaultProps = {
   active: null,
-  setActive: () => {},
+  toggleActive: () => {},
 };
 
 export default Sentence;
