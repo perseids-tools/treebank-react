@@ -19,7 +19,7 @@ const sentenceToGraph = (sentence) => {
       },
     } = word;
     graph.nodes.push({
-      id, label: form, postag, _word: word,
+      id, label: form, postag,
     });
     graph.links.push({ source: head, target: id, label: relation });
   });

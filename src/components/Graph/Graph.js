@@ -1,18 +1,14 @@
 import React from 'react';
-import DagreGraph from 'dagre-d3-react';
-import { curveBasis } from 'd3-shape';
 import { object, func } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
 
 import styles from './Graph.module.scss';
 
+import DagreWrapper from './DagreWrapper';
+
 import { sentenceToGraph } from '../../lib/parsing';
 import { getColor } from '../Treebank/config';
-
-const dagreConfig = {
-  rankdir: 'TB',
-};
 
 const nodeConfig = (config, active, { id, postag }) => {
   const color = getColor(config, postag);
@@ -37,7 +33,6 @@ const configureNodes = (config, active, nodes) => (
 
 const linkConfig = {
   arrowheadStyle: 'display: none',
-  curve: curveBasis,
 };
 
 const configureLinks = (links) => (
@@ -49,19 +44,20 @@ const configureLinks = (links) => (
   })
 );
 
+const findWord = (wordId, sentence) => (
+  sentence.word.find(({ $: { id } }) => id === wordId)
+);
+
 const Graph = ({
   sentence, active, toggleActive, config,
 }) => {
   const { nodes, links } = sentenceToGraph(sentence);
 
   return (
-    <DagreGraph
+    <DagreWrapper
       nodes={configureNodes(config, active, nodes)}
       links={configureLinks(links)}
-      zoomable
-      className={styles.graph}
-      config={dagreConfig}
-      onNodeClick={({ original: { _word } }) => toggleActive(_word)}
+      onClick={(id) => toggleActive(findWord(id, sentence))}
     />
   );
 };
