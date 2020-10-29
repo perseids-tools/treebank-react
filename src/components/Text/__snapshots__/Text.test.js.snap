@@ -8,11 +8,14 @@ exports[`renders a sentence 1`] = `
     <span
       className="word"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
       style={
         Object {
           "color": "rgb(43, 114, 124)",
         }
       }
+      tabIndex="0"
     >
       Ἡροδότου
     </span>

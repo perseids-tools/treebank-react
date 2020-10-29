@@ -51,12 +51,25 @@ const renderWord = (word, active, toggleActive) => {
   const { $: { id } } = word;
   const isActive = active && active.$.id === id;
   const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
+  const onClick = () => {
+    toggleActive(word);
+  };
+  const onKeyDown = (event) => {
+    const { key } = event;
+
+    if (key === 'Enter') {
+      onClick(event);
+    }
+  };
 
   return (
     <div
       key={id}
+      role="button"
+      tabIndex="0"
       className={className}
-      onClick={() => toggleActive(word)}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
     >
       {openingTag('word', word.$, id, true, <>&nbsp;&nbsp;&nbsp;&nbsp;</>)}
     </div>

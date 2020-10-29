@@ -81,6 +81,9 @@ exports[`renders a sentence as XML 1`] = `
   <div
     className="word"
     onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex="0"
   >
     <span
       className="bracket"
@@ -174,6 +177,9 @@ exports[`renders a sentence as XML 1`] = `
   <div
     className="word"
     onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex="0"
   >
     <span
       className="bracket"

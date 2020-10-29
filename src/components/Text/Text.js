@@ -13,11 +13,24 @@ const wordToSpan = (config, active, toggleActive, word) => {
   const color = getColor(config, postag);
   const isActive = active && active.$.id === id;
   const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
+  const onClick = () => {
+    toggleActive(word);
+  };
+  const onKeyDown = (event) => {
+    const { key } = event;
+
+    if (key === 'Enter') {
+      onClick();
+    }
+  };
 
   return (
     <Fragment key={id}>
       <span
-        onClick={() => toggleActive(word)}
+        role="button"
+        tabIndex="0"
+        onClick={onClick}
+        onKeyDown={onKeyDown}
         className={className}
         style={{ color }}
       >
