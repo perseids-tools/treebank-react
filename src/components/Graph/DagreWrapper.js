@@ -23,7 +23,7 @@ const drawGraph = (svg, g, { nodes, links, onClick }) => {
   links.forEach(({
     source, target, label, config: { arrowheadStyle },
   }) => {
-    graph.setEdge(source, target, { label, arrowheadStyle, curve: d3.curveBasis });
+    graph.setEdge(source, target, { label, arrowheadStyle });
   });
 
   // eslint-disable-next-line new-cap
