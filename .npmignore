@@ -25,3 +25,8 @@ CHANGELOG.md
 README.md
 UPGRADE.md
 .storybook
+vendor
+.eslintignore
+.gitmodules
+.eslintrc.json
+.github
