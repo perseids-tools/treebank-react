@@ -1,6 +1,22 @@
 {
   "name": "treebank-react",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "Treebank display engine for React",
+  "homepage": "https://perseids-tools.github.io/treebank-react/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perseids-tools/treebank-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/perseids-tools/treebank-react/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "treebank",
+    "perseids",
+    "ancient-greek",
+    "latin"
+  ],
   "main": "build/index.js",
   "scripts": {
     "predeploy": "yarn run demo",
