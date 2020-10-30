@@ -81,9 +81,9 @@ const App = () => {
             <Xml />
           </Collapse>
         </Sentence>
+        <br />
+        <textarea rows={30} className={styles.textarea} value={xml} onChange={handleChange} />
       </Treebank>
-      <br />
-      <textarea rows={30} cols={135} value={xml} onChange={handleChange} />
     </div>
   );
 };
