@@ -684,6 +684,9 @@ module.exports = function(webpackEnv) {
       ? {
         react: 'react',
         'react-dom': 'react-dom',
+        d3: 'd3',
+        'dagre-d3': 'dagre-d3',
+        xml2js: 'xml2js',
       }
       : {},
     // Some libraries import Node modules but don't use them in the browser.
