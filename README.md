@@ -20,7 +20,7 @@ Note that this package has the following peer dependencies:
 }
 ```
 
-(See project on [npm](https://www.npmjs.com/package/treebank-react))
+(See project on [npm](https://www.npmjs.com/package/treebank-react).)
 
 ## How to use
 
@@ -56,7 +56,7 @@ sentence to display.
 #### Graph
 
 The `<Graph>` component must be within a `<Sentence>` component.
-It use Dagre-d3 to display the treebank.
+It uses Dagre-d3 to display the treebank.
 
 The height and width of the graph are determined by the parent element.
 This is subject to change, but currently it expects a parent with `display: flex`.
@@ -79,7 +79,7 @@ The `<Xml>` component displays the XML of the sentence.
 
 #### Collapse
 
-The `<Collapse>` element is provided for convenience.
+The `<Collapse>` component is provided for convenience.
 It is a button that displays or hides its children whenever it is clicked.
 
 ## Development
