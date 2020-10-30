@@ -1,4 +1,8 @@
-src/index.js
-src/serviceWorker.js
+src/lib/setupTests.js
+src/demo/index.js
+src/demo/serviceWorker.js
 build/
+demo/
 public/
+scripts/
+config/

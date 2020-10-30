@@ -26,7 +26,7 @@ jobs:
           CI: true
 
       - name: Build
-        run: yarn build
+        run: yarn demo
         env:
           PUBLIC_URL: /treebank-react
 
@@ -35,5 +35,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ github.token }}
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: demo
           CLEAN: true

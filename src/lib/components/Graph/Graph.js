@@ -7,7 +7,7 @@ import styles from './Graph.module.scss';
 
 import DagreWrapper from './DagreWrapper';
 
-import { sentenceToGraph } from '../../lib/parsing';
+import { sentenceToGraph } from '../../utils/parsing';
 import { getColor } from '../Treebank/config';
 
 const nodeConfig = (config, active, { id, postag }) => {

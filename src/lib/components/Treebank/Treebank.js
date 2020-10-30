@@ -1,7 +1,7 @@
 import React from 'react';
 import { node, string } from 'prop-types';
 
-import { xmlToJson } from '../../lib/parsing';
+import { xmlToJson } from '../../utils/parsing';
 import { getConfig } from './config';
 
 import TreebankContext from './treebank-context';
