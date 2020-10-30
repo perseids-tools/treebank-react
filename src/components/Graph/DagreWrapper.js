@@ -5,8 +5,21 @@ import * as d3 from 'd3';
 
 import styles from './Graph.module.scss';
 
+const treeMargin = 15;
+
 const config = {
   rankdir: 'TB',
+};
+
+const setInitialPosition = (selectedSvg, zoom) => {
+  const node = selectedSvg.node();
+  const bounds = node.getBBox();
+  const width = node.clientWidth;
+  const offset = d3.zoomIdentity.translate(treeMargin, treeMargin);
+
+  const scale = (width - treeMargin * 2) / bounds.width;
+
+  selectedSvg.call(zoom.transform, offset.scale(scale));
 };
 
 const drawGraph = (svg, g, {
@@ -41,8 +54,14 @@ const drawGraph = (svg, g, {
   selectedSvg.call(zoom);
 
   selectedG.attr('transform', d3.zoomIdentity);
+
   renderer(selectedG, graph);
-  selectedG.attr('transform', transform.current);
+
+  if (transform.current) {
+    selectedG.attr('transform', transform.current);
+  } else {
+    setInitialPosition(selectedSvg, zoom);
+  }
 
   selectedSvg.selectAll('g.node').on('mousedown', ({ target }) => {
     // eslint-disable-next-line no-underscore-dangle
@@ -60,7 +79,7 @@ const DagreWrapper = ({ nodes, links, onClick }) => {
   // keeps track of the zoom level and positioning. When a re-render occurs,
   // the code first sets the zoom and and position to the default, then
   // re-renders, and finally resets the zoom to what it was before.
-  const transform = useRef(d3.zoomIdentity);
+  const transform = useRef(null);
 
   useEffect(() => drawGraph(svg, g, {
     nodes, links, onClick, transform,
