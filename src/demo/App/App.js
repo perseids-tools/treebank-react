@@ -76,7 +76,9 @@ const App = () => {
       <Treebank treebank={xml}>
         <Sentence id="1">
           <Text />
-          <Graph />
+          <div className={styles.graph}>
+            <Graph />
+          </div>
           <Information />
           <Collapse title="XML">
             <Xml />

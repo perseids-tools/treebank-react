@@ -1,13 +1,13 @@
 .graph {
   background-color: rgb(242, 242, 242);
-  min-height: 500px;
   cursor: grab;
+  width: 100%;
+
+  margin-bottom: 0.2rem;
 
   &:active {
     cursor: grabbing;
   }
-
-  margin-bottom: 0.2rem;
 
   path {
     stroke: #333;
