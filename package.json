@@ -1,6 +1,6 @@
 {
   "name": "treebank-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Treebank display engine for React",
   "homepage": "https://perseids-tools.github.io/treebank-react/",
   "repository": {
@@ -35,7 +35,7 @@
     "xml2js": "^0.4.23"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.6.0",
