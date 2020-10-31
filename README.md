@@ -16,7 +16,7 @@ Note that this package has the following peer dependencies:
 
 ```json
 {
-  "react": "^16.0.0",
+  "react": "^16.0.0 || ^17.0.0"
 }
 ```
 
