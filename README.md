@@ -31,16 +31,40 @@ See the demo [App.js](/src/demo/App/App.js).
 ### Example
 
 ```jsx
-<Treebank treebank={xml}>
-  <Sentence id="1">
-    <Text />
-    <Graph />
-    <Information />
-    <Collapse title="XML">
-      <Xml />
-    </Collapse>
-  </Sentence>
-</Treebank>
+import {
+  Treebank,
+  Sentence,
+  Text,
+  Graph,
+  Information,
+  Xml,
+  Collapse,
+} from 'treebank-react';
+
+import 'treebank-react/build/index.css';
+
+const xml = '<treebank xml:lang="grc" format="aldt" version="1.5">\n'
+  + '  <sentence id="1" document_id="" subdoc="" span="">\n'
+  + '    <word id="1" form="χαῖρε" lemma="χαίρω" postag="v2spma---" relation="PRED" head="0"/>\n'
+  + '    <word id="2" form="ὦ" lemma="ὦ" postag="i--------" relation="AuxZ" head="3"/>\n'
+  + '    <word id="3" form="κόσμε" lemma="κόσμος" postag="n-s---mv-" relation="ExD" head="1"/>\n'
+  + '  </sentence>\n'
+  + '</treebank>';
+
+const App = () => (
+  <Treebank treebank={xml}>
+    <Sentence id="1">
+      <Text />
+      <Graph />
+      <Information />
+      <Collapse title="XML">
+        <Xml />
+      </Collapse>
+    </Sentence>
+  </Treebank>
+);
+
+export default  App;
 ```
 
 #### Treebank
