@@ -44,7 +44,7 @@ const wordToSpan = (config, active, toggleActive, word) => {
 const Text = ({
   sentence, active, toggleActive, config,
 }) => (
-  <div className={styles.sentence}>
+  <div className={styles.text}>
     <p>
       {sentence.word.map((word) => wordToSpan(config, active, toggleActive, word))}
     </p>
