@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { object, func } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
@@ -19,6 +19,7 @@ const nodeConfig = (config, active, { id, postag }) => {
     labelStyle: `color: ${color}`,
     labelType: 'html',
     class: className,
+    isActive,
   };
 };
 
@@ -52,6 +53,11 @@ const Graph = ({
   sentence, active, toggleActive, config,
 }) => {
   const { nodes, links } = sentenceToGraph(sentence);
+
+  // TODO - consider how active could be controlled from the container
+  useEffect(() => {
+    toggleActive(null);
+  }, [sentence]);
 
   return (
     <DagreWrapper
