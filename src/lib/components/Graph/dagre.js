@@ -118,11 +118,17 @@ const setInitialPosition = (selectedSvg, zoom) => {
   const node = selectedSvg.node();
   const bounds = node.getBBox();
   const width = node.clientWidth;
-  const offset = d3.zoomIdentity.translate(treeMargin, treeMargin);
 
-  const scale = (width - treeMargin * 2) / bounds.width;
+  if (bounds.width > width - (treeMargin * 2)) {
+    const offset = d3.zoomIdentity.translate(treeMargin, treeMargin);
+    const scale = (width - treeMargin * 2) / bounds.width;
 
-  selectedSvg.call(zoom.transform, offset.scale(scale));
+    selectedSvg.call(zoom.transform, offset.scale(scale));
+  } else {
+    const offset = d3.zoomIdentity.translate((width - bounds.width) / 2, treeMargin);
+
+    selectedSvg.call(zoom.transform, offset);
+  }
 };
 
 const drawInitial = (state, selectedSvg, selectedG, nodes, links, onClick) => {
@@ -146,7 +152,7 @@ const drawInitial = (state, selectedSvg, selectedG, nodes, links, onClick) => {
   const renderer = new dagreD3.render();
   const zoom = d3.zoom().on('zoom', (event) => {
     selectedG.attr('transform', event.transform);
-  });
+  }).scaleExtent([0.3, 2.5]);
 
   selectedSvg.call(zoom);
 

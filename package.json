@@ -1,6 +1,6 @@
 {
   "name": "treebank-react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Treebank display engine for React",
   "homepage": "https://perseids-tools.github.io/treebank-react/",
   "repository": {
