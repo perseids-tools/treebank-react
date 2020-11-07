@@ -27,7 +27,7 @@
 
     .edgeLabels {
       text {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
     }
   }
@@ -37,7 +37,8 @@
   :global {
     .label {
       div {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        font-weight: 420;
         cursor: pointer;
 
         &:hover {

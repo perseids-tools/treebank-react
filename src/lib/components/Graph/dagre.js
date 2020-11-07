@@ -10,6 +10,9 @@ const treeMargin = 15;
 
 const config = {
   rankdir: 'TB',
+  nodesep: 40,
+  edgesep: 10,
+  ranksep: 30,
 };
 
 const drawNoChange = (state, nodes, links, prevNodes, prevLinks) => {
@@ -138,14 +141,21 @@ const drawInitial = (state, selectedSvg, selectedG, nodes, links, onClick) => {
     id, label, config: { labelType, labelStyle, class: className },
   }) => {
     graph.setNode(id, {
-      label, labelType, labelStyle, class: className,
+      label,
+      labelType,
+      labelStyle,
+      class: className,
+      paddingLeft: 2,
+      paddingRight: 2,
+      paddingTop: 2,
+      paddingBottom: 2,
     });
   });
 
   links.forEach(({
     source, target, label, config: { arrowheadStyle },
   }) => {
-    graph.setEdge(source, target, { label, arrowheadStyle });
+    graph.setEdge(source, target, { label, arrowheadStyle, curve: d3.curveBasis });
   });
 
   // eslint-disable-next-line new-cap

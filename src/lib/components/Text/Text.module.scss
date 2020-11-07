@@ -12,6 +12,8 @@
 
 .word {
   cursor: pointer;
+  padding-right: 2px;
+  font-weight: 450;
 
   &:hover {
     background-color: #5BC8DC;
