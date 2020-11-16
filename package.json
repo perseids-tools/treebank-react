@@ -20,7 +20,7 @@
   "main": "build/index.js",
   "scripts": {
     "predeploy": "yarn run demo",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d demo",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "demo": "node scripts/demo.js",
