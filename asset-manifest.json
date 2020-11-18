@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/treebank-react/static/css/main.012755eb.chunk.css",
-    "main.js": "/treebank-react/static/js/main.f74bef3f.chunk.js",
-    "main.js.map": "/treebank-react/static/js/main.f74bef3f.chunk.js.map",
+    "main.css": "/treebank-react/static/css/main.b8b935f9.chunk.css",
+    "main.js": "/treebank-react/static/js/main.bd8965af.chunk.js",
+    "main.js.map": "/treebank-react/static/js/main.bd8965af.chunk.js.map",
     "runtime-main.js": "/treebank-react/static/js/runtime-main.cd916f0e.js",
     "runtime-main.js.map": "/treebank-react/static/js/runtime-main.cd916f0e.js.map",
-    "static/js/2.00f87a35.chunk.js": "/treebank-react/static/js/2.00f87a35.chunk.js",
-    "static/js/2.00f87a35.chunk.js.map": "/treebank-react/static/js/2.00f87a35.chunk.js.map",
+    "static/js/2.b67eff69.chunk.js": "/treebank-react/static/js/2.b67eff69.chunk.js",
+    "static/js/2.b67eff69.chunk.js.map": "/treebank-react/static/js/2.b67eff69.chunk.js.map",
     "index.html": "/treebank-react/index.html",
-    "precache-manifest.e8a2dffcfe3a497b63d1e87e3cee98df.js": "/treebank-react/precache-manifest.e8a2dffcfe3a497b63d1e87e3cee98df.js",
+    "precache-manifest.cf71f88acf6087ab3993d3d1e800dd83.js": "/treebank-react/precache-manifest.cf71f88acf6087ab3993d3d1e800dd83.js",
     "service-worker.js": "/treebank-react/service-worker.js",
-    "static/css/main.012755eb.chunk.css.map": "/treebank-react/static/css/main.012755eb.chunk.css.map"
+    "static/css/main.b8b935f9.chunk.css.map": "/treebank-react/static/css/main.b8b935f9.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.cd916f0e.js",
-    "static/js/2.00f87a35.chunk.js",
-    "static/css/main.012755eb.chunk.css",
-    "static/js/main.f74bef3f.chunk.js"
+    "static/js/2.b67eff69.chunk.js",
+    "static/css/main.b8b935f9.chunk.css",
+    "static/js/main.bd8965af.chunk.js"
   ]
 }
