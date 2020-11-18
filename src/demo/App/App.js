@@ -8,6 +8,7 @@ import {
   Text,
   Graph,
   Information,
+  Annotators,
   Xml,
   Collapse,
 } from '../../lib';
@@ -82,6 +83,9 @@ const App = () => {
           <Information />
           <Collapse title="XML">
             <Xml />
+          </Collapse>
+          <Collapse title="Annotators">
+            <Annotators />
           </Collapse>
         </Sentence>
         <br />
