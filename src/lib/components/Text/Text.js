@@ -9,21 +9,9 @@ import { getColor } from '../Treebank/config';
 
 const formatId = (id) => id.padStart(4, '0');
 
-const formatInsertionId = (insertionId) => {
-  if (/-/.test(insertionId)) {
-    return insertionId.split(/-/)[1];
-  }
-
-  return insertionId;
-};
-
-const wordId = ({ $: { id, insertion_id: insertionId } }) => {
-  if (insertionId) {
-    return formatInsertionId(insertionId);
-  }
-
-  return formatId(id);
-};
+const wordId = ({ $: { id, insertion_id: insertionId } }) => (
+  formatId(insertionId || id)
+);
 
 const compareWords = (wordA, wordB) => {
   const idA = wordId(wordA);
@@ -41,10 +29,22 @@ const compareWords = (wordA, wordB) => {
 };
 
 const wordToSpan = (word, config, active, toggleActive) => {
-  const { $: { id, form, postag } } = word;
+  const {
+    $: {
+      id, form, postag, artificial,
+    },
+  } = word;
   const color = getColor(config, postag);
-  const isActive = active && active.$.id === id;
-  const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
+  const classes = [styles.word];
+
+  if (active && active.$.id === id) {
+    classes.push(styles.active);
+  }
+
+  if (artificial === 'elliptic') {
+    classes.push(styles.elliptic);
+  }
+
   const onClick = () => {
     toggleActive(word);
   };
@@ -63,7 +63,7 @@ const wordToSpan = (word, config, active, toggleActive) => {
         tabIndex="0"
         onClick={onClick}
         onKeyDown={onKeyDown}
-        className={className}
+        className={classes.join(' ')}
         style={{ color }}
       >
         {form}

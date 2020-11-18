@@ -31,7 +31,31 @@ it('orders the words of a sentence correctly', () => {
       },
       {
         $: {
-          id: '1', insertion_id: '0001-0004e', form: 'κόσμε', postag: 'n-s---mv-',
+          id: '1', insertion_id: '0004e', form: 'κόσμε', postag: 'n-s---mv-',
+        },
+      },
+    ],
+  };
+
+  const component = (
+    <Text
+      sentence={sentence}
+      active={null}
+      toggleActive={() => {}}
+      config={getConfig('aldt', 'grc')}
+    />
+  );
+  const tree = renderer.create(component).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('styles `artificial="elliptic"` words differently', () => {
+  const sentence = {
+    word: [
+      {
+        $: {
+          id: '1', form: 'Ἡροδότου', postag: 'n-s---mg-', artificial: 'elliptic',
         },
       },
     ],

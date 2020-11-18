@@ -92,3 +92,27 @@ exports[`renders a sentence 1`] = `
   </p>
 </div>
 `;
+
+exports[`styles \`artificial="elliptic"\` words differently 1`] = `
+<div
+  className="text"
+>
+  <p>
+    <span
+      className="word elliptic"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+      tabIndex="0"
+    >
+      Ἡροδότου
+    </span>
+     
+  </p>
+</div>
+`;
