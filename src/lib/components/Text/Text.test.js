@@ -18,3 +18,34 @@ it('renders a sentence', () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it('orders the words of a sentence correctly', () => {
+  const sentence = {
+    word: [
+      { $: { id: '4', form: 'ὦ', postag: 'e--------' } },
+      { $: { id: '3', form: 'χαῖρε', postag: 'v2spma---' } },
+      {
+        $: {
+          id: '2', insertion_id: '0004f', form: '.', postag: 'u--------',
+        },
+      },
+      {
+        $: {
+          id: '1', insertion_id: '0001-0004e', form: 'κόσμε', postag: 'n-s---mv-',
+        },
+      },
+    ],
+  };
+
+  const component = (
+    <Text
+      sentence={sentence}
+      active={null}
+      toggleActive={() => {}}
+      config={getConfig('aldt', 'grc')}
+    />
+  );
+  const tree = renderer.create(component).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

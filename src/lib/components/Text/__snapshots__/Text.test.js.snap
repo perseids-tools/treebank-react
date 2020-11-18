@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`orders the words of a sentence correctly 1`] = `
+<div
+  className="text"
+>
+  <p>
+    <span
+      className="word"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "red",
+        }
+      }
+      tabIndex="0"
+    >
+      χαῖρε
+    </span>
+     
+    <span
+      className="word"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": null,
+        }
+      }
+      tabIndex="0"
+    >
+      ὦ
+    </span>
+     
+    <span
+      className="word"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+      tabIndex="0"
+    >
+      κόσμε
+    </span>
+     
+    <span
+      className="word"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": null,
+        }
+      }
+      tabIndex="0"
+    >
+      .
+    </span>
+     
+  </p>
+</div>
+`;
+
 exports[`renders a sentence 1`] = `
 <div
   className="text"
