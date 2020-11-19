@@ -7,12 +7,44 @@ import styles from './Text.module.scss';
 
 import { getColor } from '../Treebank/config';
 
-// eslint-disable-next-line react/prop-types
-const wordToSpan = (config, active, toggleActive, word) => {
-  const { $: { id, form, postag } } = word;
+const formatId = (id) => id.padStart(4, '0');
+
+const wordId = ({ $: { id, insertion_id: insertionId } }) => (
+  formatId(insertionId || id)
+);
+
+const compareWords = (wordA, wordB) => {
+  const idA = wordId(wordA);
+  const idB = wordId(wordB);
+
+  if (idA < idB) {
+    return -1;
+  }
+
+  if (idB < idA) {
+    return 1;
+  }
+
+  return 0;
+};
+
+const wordToSpan = (word, config, active, toggleActive) => {
+  const {
+    $: {
+      id, form, postag, artificial,
+    },
+  } = word;
   const color = getColor(config, postag);
-  const isActive = active && active.$.id === id;
-  const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
+  const classes = [styles.word];
+
+  if (active && active.$.id === id) {
+    classes.push(styles.active);
+  }
+
+  if (artificial === 'elliptic') {
+    classes.push(styles.elliptic);
+  }
+
   const onClick = () => {
     toggleActive(word);
   };
@@ -31,7 +63,7 @@ const wordToSpan = (config, active, toggleActive, word) => {
         tabIndex="0"
         onClick={onClick}
         onKeyDown={onKeyDown}
-        className={className}
+        className={classes.join(' ')}
         style={{ color }}
       >
         {form}
@@ -43,13 +75,20 @@ const wordToSpan = (config, active, toggleActive, word) => {
 
 const Text = ({
   sentence, active, toggleActive, config,
-}) => (
-  <div className={styles.text}>
-    <p>
-      {sentence.word.map((word) => wordToSpan(config, active, toggleActive, word))}
-    </p>
-  </div>
-);
+}) => {
+  const wordsCopy = [...sentence.word];
+  const spans = wordsCopy
+    .sort(compareWords)
+    .map((word) => wordToSpan(word, config, active, toggleActive));
+
+  return (
+    <div className={styles.text}>
+      <p>
+        {spans}
+      </p>
+    </div>
+  );
+};
 
 Text.propTypes = {
   sentence: sentenceType.isRequired,
