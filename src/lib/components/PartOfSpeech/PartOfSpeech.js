@@ -3,7 +3,7 @@ import { object } from 'prop-types';
 
 import { wordType } from '../../types';
 
-import styles from './Information.module.scss';
+import styles from './PartOfSpeech.module.scss';
 
 import { deconstructPostag } from '../Treebank/config';
 
@@ -21,7 +21,7 @@ const renderPostag = ([name, value]) => (
   </div>
 );
 
-const Information = ({ active, config }) => {
+const PartOfSpeech = ({ active, config }) => {
   if (active) {
     const { $: { postag, lemma } } = active;
 
@@ -40,14 +40,14 @@ const Information = ({ active, config }) => {
   );
 };
 
-Information.propTypes = {
+PartOfSpeech.propTypes = {
   active: wordType,
   // eslint-disable-next-line react/forbid-prop-types
   config: object.isRequired,
 };
 
-Information.defaultProps = {
+PartOfSpeech.defaultProps = {
   active: null,
 };
 
-export default Information;
+export default PartOfSpeech;
