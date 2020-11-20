@@ -30,3 +30,4 @@ vendor
 .gitmodules
 .eslintrc.json
 .github
+.tool-versions
