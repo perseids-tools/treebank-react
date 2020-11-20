@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { node, string } from 'prop-types';
 
 import { xmlToJson } from '../../utils/parsing';
@@ -14,7 +14,7 @@ const configFromJson = (json) => (
 );
 
 const Treebank = ({ treebank, children }) => {
-  const json = xmlToJson(treebank);
+  const json = useMemo(() => xmlToJson(treebank), [treebank]);
   const config = configFromJson(json);
 
   return (
