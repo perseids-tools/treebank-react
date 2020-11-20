@@ -21,7 +21,9 @@ const sentenceToGraph = (sentence) => {
     graph.nodes.push({
       id, label: form, postag,
     });
-    graph.links.push({ source: head, target: id, label: relation });
+    if (id && head) {
+      graph.links.push({ source: head, target: id, label: relation });
+    }
   });
 
   return graph;
