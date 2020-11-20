@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import { getConfig } from '../Treebank/config';
 
-import Information from './Information';
+import PartOfSpeech from './PartOfSpeech';
 
 it('renders a sentence', () => {
   const active = {
@@ -18,7 +18,7 @@ it('renders a sentence', () => {
   };
 
   const component = (
-    <Information
+    <PartOfSpeech
       active={active}
       config={getConfig('aldt', 'grc')}
     />

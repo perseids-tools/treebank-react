@@ -12,6 +12,15 @@ const wordType = shape({
     postag: string,
     relation: string,
     head: string,
+    sg: string,
+    comment: string,
+    artificial: string,
+    gloss: string,
+    alternateGloss: string,
+    semanticRole: string,
+    include: string,
+    multiword: string,
+    notes: string,
   }),
 });
 

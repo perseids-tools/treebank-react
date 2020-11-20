@@ -7,7 +7,7 @@ import {
   Sentence,
   Text,
   Graph,
-  Information,
+  PartOfSpeech,
   Annotators,
   Xml,
   Collapse,
@@ -80,7 +80,7 @@ const App = () => {
           <div className={styles.graph}>
             <Graph />
           </div>
-          <Information />
+          <PartOfSpeech />
           <Collapse title="XML">
             <Xml />
           </Collapse>
