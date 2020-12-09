@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { node, string } from 'prop-types';
 
 import { xmlToJson } from '../../utils/parsing';
@@ -6,21 +6,30 @@ import { getConfig } from './config';
 
 import TreebankContext from './treebank-context';
 
-const configFromJson = (json) => (
+const configFromJson = (json, callback) => (
   getConfig(
-    json.treebank.$['xml:lang'],
     json.treebank.$.format,
+    json.treebank.$['xml:lang'],
+    callback,
   )
 );
 
 const Treebank = ({ treebank, children }) => {
+  const [config, setConfig] = useState(null);
   const json = useMemo(() => xmlToJson(treebank), [treebank]);
-  const config = configFromJson(json);
+
+  useMemo(() => configFromJson(json, setConfig), [treebank]);
+
+  if (config) {
+    return (
+      <TreebankContext.Provider value={{ json, config }}>
+        {children}
+      </TreebankContext.Provider>
+    );
+  }
 
   return (
-    <TreebankContext.Provider value={{ json, config }}>
-      {children}
-    </TreebankContext.Provider>
+    <div />
   );
 };
 

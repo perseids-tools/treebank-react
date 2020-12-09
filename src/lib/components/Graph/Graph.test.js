@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { getConfig } from '../Treebank/config';
+import config from '../Treebank/config/arethusa-configs/aldt2grc.json';
 
 import Graph from './Graph';
 
@@ -29,7 +29,7 @@ it('renders a sentence', () => {
       sentence={sentence}
       active={null}
       toggleActive={() => {}}
-      config={getConfig('aldt', 'grc')}
+      config={config}
     />
   );
   const tree = renderer.create(component).toJSON();
