@@ -15,11 +15,11 @@ const sentenceToGraph = (sentence) => {
   sentence.word.forEach((word) => {
     const {
       $: {
-        id, form, head, relation, postag,
+        id, form, head, relation, postag, artificial,
       },
     } = word;
     graph.nodes.push({
-      id, label: form, postag,
+      id, label: form, postag, artificial,
     });
     if (id && head) {
       graph.links.push({ source: head, target: id, label: relation });

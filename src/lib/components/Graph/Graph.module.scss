@@ -58,3 +58,23 @@
     }
   }
 }
+
+.elliptic {
+  :global {
+    .label {
+      div {
+        font-size: 0.7rem;
+
+        // There is an issue when the `font-size` of a `div` within a
+        // `foreignObject` is less than `1rem`. When this happens, Dagre-d3
+        // calculates the correct height for the `div`, but it is not
+        // vertically centered. This results in the bottom of the `div` being
+        // cut off. I'm not sure if this problem is in Dagre-d3 or the way
+        // browsers render SVGs. Whatever the case, setting the `display` to
+        // `table` fixes the issue. Other values for `display` either don't fix
+        // the issue or break the rendering of the graph in other ways.
+        display: table !important;
+      }
+    }
+  }
+}

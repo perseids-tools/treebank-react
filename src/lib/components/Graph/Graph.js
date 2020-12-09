@@ -10,15 +10,23 @@ import DagreWrapper from './DagreWrapper';
 import { sentenceToGraph } from '../../utils/parsing';
 import { getColor } from '../Treebank/config';
 
-const nodeConfig = (config, active, { id, postag }) => {
+const nodeConfig = (config, active, { id, postag, artificial }) => {
   const color = getColor(config, postag);
   const isActive = active && active.$.id === id;
-  const className = isActive ? [styles.node, styles.active].join(' ') : styles.node;
+  const classes = [styles.node];
+
+  if (isActive) {
+    classes.push(styles.active);
+  }
+
+  if (artificial === 'elliptic') {
+    classes.push(styles.elliptic);
+  }
 
   return {
     labelStyle: `color: ${color}`,
     labelType: 'html',
-    class: className,
+    class: classes.join(' '),
     isActive,
   };
 };
