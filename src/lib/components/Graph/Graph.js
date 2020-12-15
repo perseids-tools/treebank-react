@@ -10,49 +10,6 @@ import DagreWrapper from './DagreWrapper';
 import { sentenceToGraph } from '../../utils/parsing';
 import { Configuration } from '../../utils/config';
 
-const nodeConfig = (config, active, { id, postag, artificial }) => {
-  const color = config.getColor(postag);
-  const isActive = active && active.$.id === id;
-  const classes = [styles.node];
-
-  if (isActive) {
-    classes.push(styles.active);
-  }
-
-  if (artificial === 'elliptic') {
-    classes.push(styles.elliptic);
-  }
-
-  return {
-    labelStyle: `color: ${color}`,
-    labelType: 'html',
-    class: classes.join(' '),
-    isActive,
-  };
-};
-
-const configureNodes = (config, active, nodes) => (
-  nodes.map((node) => {
-    // eslint-disable-next-line no-param-reassign
-    node.config = nodeConfig(config, active, node);
-
-    return node;
-  })
-);
-
-const linkConfig = {
-  arrowheadStyle: 'display: none',
-};
-
-const configureLinks = (links) => (
-  links.map((link) => {
-    // eslint-disable-next-line no-param-reassign
-    link.config = linkConfig;
-
-    return link;
-  })
-);
-
 const findWord = (wordId, sentence) => (
   sentence.word.find(({ $: { id } }) => id === wordId)
 );
@@ -60,7 +17,7 @@ const findWord = (wordId, sentence) => (
 const Graph = ({
   sentence, active, toggleActive, config,
 }) => {
-  const { nodes, links } = sentenceToGraph(sentence);
+  const { nodes, links } = sentenceToGraph(sentence, active, config, styles);
 
   useEffect(() => {
     toggleActive(null);
@@ -68,8 +25,8 @@ const Graph = ({
 
   return (
     <DagreWrapper
-      nodes={configureNodes(config, active, nodes)}
-      links={configureLinks(links)}
+      nodes={nodes}
+      links={links}
       onClick={(id) => toggleActive(findWord(id, sentence))}
     />
   );
