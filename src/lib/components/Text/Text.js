@@ -5,7 +5,7 @@ import { sentenceType, wordType } from '../../types';
 
 import styles from './Text.module.scss';
 
-import { getColor } from '../Treebank/config';
+import { getColor } from '../../utils/config';
 
 const formatId = (id) => id.padStart(4, '0');
 

@@ -5,7 +5,7 @@ import { wordType } from '../../types';
 
 import styles from './PartOfSpeech.module.scss';
 
-import { deconstructPostag } from '../Treebank/config';
+import { deconstructPostag } from '../../utils/config';
 
 const renderLemma = (lemma) => (
   <div className={styles.container}>

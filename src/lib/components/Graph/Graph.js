@@ -8,7 +8,7 @@ import styles from './Graph.module.scss';
 import DagreWrapper from './DagreWrapper';
 
 import { sentenceToGraph } from '../../utils/parsing';
-import { getColor } from '../Treebank/config';
+import { getColor } from '../../utils/config';
 
 const nodeConfig = (config, active, { id, postag, artificial }) => {
   const color = getColor(config, postag);

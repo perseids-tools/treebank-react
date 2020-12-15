@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import config from '../Treebank/config/arethusa-configs/aldt2grc.json';
+import config from '../../utils/config/arethusa-configs/aldt2grc.json';
 
 import Graph from './Graph';
 
