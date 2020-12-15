@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { object, func } from 'prop-types';
+import { func, instanceOf } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
 
@@ -8,10 +8,10 @@ import styles from './Graph.module.scss';
 import DagreWrapper from './DagreWrapper';
 
 import { sentenceToGraph } from '../../utils/parsing';
-import { getColor } from '../../utils/config';
+import { Configuration } from '../../utils/config';
 
 const nodeConfig = (config, active, { id, postag, artificial }) => {
-  const color = getColor(config, postag);
+  const color = config.getColor(postag);
   const isActive = active && active.$.id === id;
   const classes = [styles.node];
 
@@ -62,7 +62,6 @@ const Graph = ({
 }) => {
   const { nodes, links } = sentenceToGraph(sentence);
 
-  // TODO - consider how active could be controlled from the container
   useEffect(() => {
     toggleActive(null);
   }, [sentence]);
@@ -80,8 +79,7 @@ Graph.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
   toggleActive: func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  config: object.isRequired,
+  config: instanceOf(Configuration).isRequired,
 };
 
 Graph.defaultProps = {

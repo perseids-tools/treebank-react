@@ -1,5 +1,4 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom/extend-expect';
+import aldt2grc from './utils/config/arethusa-configs/aldt2grc.json';
+import { Configuration } from './utils/config';
+
+global.defaultConfig = new Configuration(aldt2grc);

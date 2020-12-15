@@ -1,11 +1,9 @@
 import {
   getConfig,
-  getColor,
-  deconstructPostag,
+  Configuration,
 } from './config';
 
 export {
   getConfig,
-  getColor,
-  deconstructPostag,
+  Configuration,
 };

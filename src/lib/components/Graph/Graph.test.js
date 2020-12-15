@@ -1,8 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import config from '../../utils/config/arethusa-configs/aldt2grc.json';
-
 import Graph from './Graph';
 
 it('renders a sentence', () => {
@@ -29,7 +27,7 @@ it('renders a sentence', () => {
       sentence={sentence}
       active={null}
       toggleActive={() => {}}
-      config={config}
+      config={global.defaultConfig}
     />
   );
   const tree = renderer.create(component).toJSON();

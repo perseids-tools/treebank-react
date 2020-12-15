@@ -46,65 +46,86 @@ const configMap = {
   whitaker: true,
 };
 
+const memoize = (fun) => {
+  const results = {};
+
+  return (arg) => {
+    if (!results.hasOwnProperty(arg)) {
+      results[arg] = fun(arg);
+    }
+
+    return results[arg];
+  };
+}
+
+class Configuration {
+  constructor(config) {
+    this.config = config;
+
+    this.getColor = memoize(this.getColor.bind(this));
+    this.deconstructPostag = memoize(this.deconstructPostag.bind(this));
+  }
+
+  deconstructPostag(postag) {
+    const deconstructedPostag = [];
+
+    if (postag && this.config.plugins && this.config.plugins.morph) {
+      const { postagSchema, attributes } = this.config.plugins.morph;
+
+      postagSchema.forEach((type, index) => {
+        const attribute = attributes[type];
+        const name = attribute.long || attribute.short || type;
+        const values = Object.entries(attribute.values);
+        const match = values.find(([, { postag: abbreviation }]) => abbreviation === postag[index]);
+
+        if (match) {
+          deconstructedPostag.push([
+            name,
+            match[1].long || match[1].short || match[0],
+          ]);
+        }
+      });
+    }
+
+    return deconstructedPostag;
+  };
+
+
+  getColor(postag) {
+    if (postag && this.config.plugins && this.config.plugins.morph) {
+      const { postagSchema, styledThrough, attributes } = this.config.plugins.morph;
+      const index = postagSchema.findIndex((n) => n === styledThrough);
+      const mapping = attributes[styledThrough];
+
+      if (mapping && index > -1) {
+        const values = Object.values(mapping.values);
+        const valueIndex = values.findIndex(({ postag: abbreviation }) => (
+          abbreviation === postag[index]
+        ));
+
+        if (valueIndex > -1) {
+          const value = values[valueIndex];
+
+          if (value.style && value.style.color) {
+            return value.style.color;
+          }
+        }
+      }
+    }
+
+    return null;
+  };
+}
+
 const getConfig = (format, lang, callback) => {
   // Backwards compatibility
   const key = format === 'aldt' ? `aldt2${lang}` : format;
   const config = configMap[key] ? key : (lang === 'grc' ? 'aldt-misc-grc' : 'aldt-misc')
 
-  import(`./arethusa-configs/${config}.json`).then(callback);
-};
-
-const getColor = (config, postag) => {
-  if (postag && config.plugins && config.plugins.morph) {
-    const { postagSchema, styledThrough, attributes } = config.plugins.morph;
-    const index = postagSchema.findIndex((n) => n === styledThrough);
-    const mapping = attributes[styledThrough];
-
-    if (mapping && index > -1) {
-      const values = Object.values(mapping.values);
-      const valueIndex = values.findIndex(({ postag: abbreviation }) => (
-        abbreviation === postag[index]
-      ));
-
-      if (valueIndex > -1) {
-        const value = values[valueIndex];
-
-        if (value.style && value.style.color) {
-          return value.style.color;
-        }
-      }
-    }
-  }
-
-  return null;
-};
-
-const deconstructPostag = (config, postag) => {
-  const deconstructedPostag = [];
-
-  if (postag && config.plugins && config.plugins.morph) {
-    const { postagSchema, attributes } = config.plugins.morph;
-
-    postagSchema.forEach((type, index) => {
-      const attribute = attributes[type];
-      const name = attribute.long || attribute.short || type;
-      const values = Object.entries(attribute.values);
-      const match = values.find(([, { postag: abbreviation }]) => abbreviation === postag[index]);
-
-      if (match) {
-        deconstructedPostag.push([
-          name,
-          match[1].long || match[1].short || match[0],
-        ]);
-      }
-    });
-  }
-
-  return deconstructedPostag;
+  import(`./arethusa-configs/${config}.json`).then(json => callback(new Configuration(json)));
 };
 
 export {
   getConfig,
-  getColor,
-  deconstructPostag,
+  Configuration,
 };
