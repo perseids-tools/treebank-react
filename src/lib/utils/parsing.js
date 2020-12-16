@@ -9,20 +9,70 @@ const xmlToJson = (xml) => {
   return json;
 };
 
-const sentenceToGraph = (sentence) => {
-  const graph = { nodes: [{ id: '0', label: '[ROOT]' }], links: [] };
+const createNode = (word, active, config, styles) => {
+  const {
+    $: {
+      id, form, postag, artificial,
+    },
+  } = word;
+  const color = config.getColor(postag);
+  const isActive = active && active.$.id === id;
+  const classes = [styles.node];
+
+  if (isActive) {
+    classes.push(styles.active);
+  }
+
+  if (artificial === 'elliptic') {
+    classes.push(styles.elliptic);
+  }
+
+  return {
+    artificial,
+    id,
+    postag,
+    label: form,
+    config: {
+      labelStyle: `color: ${color}`,
+      labelType: 'html',
+      class: classes.join(' '),
+      isActive,
+    },
+  };
+};
+
+const createLink = (word) => {
+  const {
+    $: {
+      id, head, relation,
+    },
+  } = word;
+
+  if (id && head) {
+    return {
+      label: relation,
+      source: head,
+      target: id,
+      config: {
+        arrowheadStyle: 'display: none',
+      },
+    };
+  }
+
+  return null;
+};
+
+const sentenceToGraph = (sentence, active, config, styles) => {
+  const graph = { nodes: [{ id: '0', label: '[ROOT]', config: { labelType: 'html', class: styles.node } }], links: [] };
 
   sentence.word.forEach((word) => {
-    const {
-      $: {
-        id, form, head, relation, postag, artificial,
-      },
-    } = word;
-    graph.nodes.push({
-      id, label: form, postag, artificial,
-    });
-    if (id && head) {
-      graph.links.push({ source: head, target: id, label: relation });
+    const node = createNode(word, active, config, styles);
+    const link = createLink(word);
+
+    graph.nodes.push(node);
+
+    if (link) {
+      graph.links.push(link);
     }
   });
 

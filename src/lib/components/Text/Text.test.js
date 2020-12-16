@@ -1,8 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import config from '../Treebank/config/arethusa-configs/aldt2grc.json';
-
 import Text from './Text';
 
 it('renders a sentence', () => {
@@ -11,7 +9,7 @@ it('renders a sentence', () => {
       sentence={{ word: [{ $: { id: '1', form: 'Ἡροδότου', postag: 'n-s---mg-' } }] }}
       active={null}
       toggleActive={() => {}}
-      config={config}
+      config={global.defaultConfig}
     />
   );
   const tree = renderer.create(component).toJSON();
@@ -42,7 +40,7 @@ it('orders the words of a sentence correctly', () => {
       sentence={sentence}
       active={null}
       toggleActive={() => {}}
-      config={config}
+      config={global.defaultConfig}
     />
   );
   const tree = renderer.create(component).toJSON();
@@ -66,7 +64,7 @@ it('styles `artificial="elliptic"` words differently', () => {
       sentence={sentence}
       active={null}
       toggleActive={() => {}}
-      config={config}
+      config={global.defaultConfig}
     />
   );
   const tree = renderer.create(component).toJSON();

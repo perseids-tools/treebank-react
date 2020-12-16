@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { node, string } from 'prop-types';
 
 import { xmlToJson } from '../../utils/parsing';
-import { getConfig } from './config';
+import { getConfig } from '../../utils/config';
 
 import TreebankContext from './treebank-context';
 

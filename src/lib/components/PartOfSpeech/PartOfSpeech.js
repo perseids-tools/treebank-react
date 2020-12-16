@@ -1,11 +1,11 @@
 import React from 'react';
-import { object } from 'prop-types';
+import { instanceOf } from 'prop-types';
 
 import { wordType } from '../../types';
 
 import styles from './PartOfSpeech.module.scss';
 
-import { deconstructPostag } from '../Treebank/config';
+import { Configuration } from '../../utils/config';
 
 const renderLemma = (lemma) => (
   <div className={styles.container}>
@@ -29,7 +29,7 @@ const PartOfSpeech = ({ active, config }) => {
       <div className={styles.information}>
         <dl className={styles.dl}>
           {renderLemma(lemma)}
-          {deconstructPostag(config, postag).map(renderPostag)}
+          {config.deconstructPostag(postag).map(renderPostag)}
         </dl>
       </div>
     );
@@ -42,8 +42,7 @@ const PartOfSpeech = ({ active, config }) => {
 
 PartOfSpeech.propTypes = {
   active: wordType,
-  // eslint-disable-next-line react/forbid-prop-types
-  config: object.isRequired,
+  config: instanceOf(Configuration).isRequired,
 };
 
 PartOfSpeech.defaultProps = {

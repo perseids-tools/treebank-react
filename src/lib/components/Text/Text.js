@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import { object, func } from 'prop-types';
+import { func, instanceOf } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
 
 import styles from './Text.module.scss';
 
-import { getColor } from '../Treebank/config';
+import { Configuration } from '../../utils/config';
 
 const formatId = (id) => id.padStart(4, '0');
 
@@ -34,7 +34,7 @@ const wordToSpan = (word, config, active, toggleActive) => {
       id, form, postag, artificial,
     },
   } = word;
-  const color = getColor(config, postag);
+  const color = config.getColor(postag);
   const classes = [styles.word];
 
   if (active && active.$.id === id) {
@@ -94,8 +94,7 @@ Text.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
   toggleActive: func,
-  // eslint-disable-next-line react/forbid-prop-types
-  config: object.isRequired,
+  config: instanceOf(Configuration).isRequired,
 };
 
 Text.defaultProps = {

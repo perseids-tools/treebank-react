@@ -1,8 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import config from '../Treebank/config/arethusa-configs/aldt2grc.json';
-
 import PartOfSpeech from './PartOfSpeech';
 
 it('renders a sentence', () => {
@@ -20,7 +18,7 @@ it('renders a sentence', () => {
   const component = (
     <PartOfSpeech
       active={active}
-      config={config}
+      config={global.defaultConfig}
     />
   );
   const tree = renderer.create(component).toJSON();
