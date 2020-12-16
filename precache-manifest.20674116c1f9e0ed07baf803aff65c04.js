@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "426f4e10637cb731c9300ec2764fc57d",
+    "revision": "076a2197d15518a11f43fd6a6cb8773b",
     "url": "/treebank-react/index.html"
   },
   {
-    "revision": "2ba7ec616dd646daa801",
-    "url": "/treebank-react/static/css/main.ee917d0a.chunk.css"
+    "revision": "93cfe25b437165745fe8",
+    "url": "/treebank-react/static/css/main.2f9b6587.chunk.css"
   },
   {
     "revision": "21bfaf15040fda0ffe81",
@@ -192,7 +192,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/treebank-react/static/js/9.90aaef50.chunk.js"
   },
   {
-    "revision": "2ba7ec616dd646daa801",
+    "revision": "93cfe25b437165745fe8",
     "url": "/treebank-react/static/js/main.c76f24be.chunk.js"
   },
   {
