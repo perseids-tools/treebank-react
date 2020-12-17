@@ -111,13 +111,7 @@ It is a button that displays or hides its children whenever it is clicked.
 ### Setup
 
 ```
-git clone --recurse-submodules git@github.com:perseids-tools/treebank-react.git
-```
-
-or if the repository is already initialized
-
-```
-git pull --recurse-submodules
+git clone git@github.com:perseids-tools/treebank-react.git
 ```
 
 then install development dependencies

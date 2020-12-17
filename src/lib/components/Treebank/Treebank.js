@@ -6,19 +6,20 @@ import { getConfig } from '../../utils/config';
 
 import TreebankContext from './treebank-context';
 
-const configFromJson = (json, callback) => (
+const configFromJson = (json, configUrl, callback) => (
   getConfig(
     json.treebank.$.format,
     json.treebank.$['xml:lang'],
+    configUrl,
     callback,
   )
 );
 
-const Treebank = ({ treebank, children }) => {
+const Treebank = ({ treebank, configUrl, children }) => {
   const [config, setConfig] = useState(null);
   const json = useMemo(() => xmlToJson(treebank), [treebank]);
 
-  useMemo(() => configFromJson(json, setConfig), [treebank]);
+  useMemo(() => configFromJson(json, configUrl, setConfig), [treebank]);
 
   if (config) {
     return (
@@ -35,10 +36,12 @@ const Treebank = ({ treebank, children }) => {
 
 Treebank.propTypes = {
   treebank: string.isRequired,
+  configUrl: string,
   children: node,
 };
 
 Treebank.defaultProps = {
+  configUrl: 'https://arethusa-configs.perseids.org/',
   children: null,
 };
 
