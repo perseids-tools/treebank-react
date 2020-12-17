@@ -27,7 +27,7 @@ exports[`orders the words of a sentence correctly 1`] = `
       role="button"
       style={
         Object {
-          "color": null,
+          "color": "gold",
         }
       }
       tabIndex="0"

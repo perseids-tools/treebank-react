@@ -28,6 +28,7 @@
     "lint": "eslint --ext=js --ext=jsx ."
   },
   "dependencies": {
+    "cross-fetch": "^3.0.6",
     "d3": "^6.2.0",
     "dagre-d3": "^0.6.4",
     "prop-types": "^15.7.2",
