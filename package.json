@@ -25,6 +25,7 @@
     "build": "node scripts/build.js",
     "demo": "node scripts/demo.js",
     "test": "node scripts/test.js",
+    "visual-test": "bash scripts/visual-test.sh",
     "lint": "eslint --ext=js --ext=jsx ."
   },
   "dependencies": {

@@ -11,8 +11,6 @@ jobs:
     name: Node ${{ matrix.node }} test
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: 'true'
 
       - uses: actions/setup-node@v1
         with:
@@ -30,7 +28,16 @@ jobs:
       # - name: Audit dependencies
       #   - run: yarn audit
 
-      - name: Run tests
+      - name: Run unit tests
         run: yarn test --coverage
         env:
           CI: true
+
+  visual-test:
+    runs-on: ubuntu-latest
+    name: Visual regression test
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run visual regression tests
+        run: bash ./scripts/visual-test.sh

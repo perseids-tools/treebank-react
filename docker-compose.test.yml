@@ -1,0 +1,19 @@
+version: '3'
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: yarn start
+    ports:
+      - 3000:3000
+    stdin_open: true # https://github.com/facebook/create-react-app/issues/8688
+  backstop:
+    image: backstopjs/backstopjs:5.0.1
+    volumes:
+      - ./visual-test:/src
+    depends_on:
+      - test
