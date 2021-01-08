@@ -122,7 +122,13 @@ yarn install
 
 ### Running tests
 
+#### Unit tests
+
 `yarn test`
+
+#### Visual regression tests
+
+`yarn visual-test`
 
 ### Running demo application
 
