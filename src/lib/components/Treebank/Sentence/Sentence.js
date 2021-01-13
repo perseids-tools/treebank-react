@@ -16,9 +16,18 @@ const findWord = (wordId, sentence) => (
 
 const WrappedSentence = ({
   // eslint-disable-next-line react/prop-types
-  id, callback, json, config, children,
+  id, callback, active: externalActiveId, setActive: externalSetActiveId, json, config, children,
 }) => {
-  const [activeId, setActiveId] = useState(null);
+  let activeId;
+  let setActiveId;
+
+  if (externalActiveId !== null || externalSetActiveId !== null) {
+    activeId = externalActiveId;
+    setActiveId = externalSetActiveId || (() => {});
+  } else {
+    [activeId, setActiveId] = useState(null);
+  }
+
   const sentence = sentenceFromJson(json, id);
 
   const active = findWord(activeId, sentence);
@@ -39,6 +48,10 @@ const WrappedSentence = ({
     }
   }, [id, json]);
 
+  useEffect(() => {
+    setActiveId(externalActiveId);
+  }, [id, json]);
+
   return (
     <SentenceContext.Provider value={{
       sentence,
@@ -54,12 +67,16 @@ const WrappedSentence = ({
   );
 };
 
-const Sentence = ({ id, callback, children }) => (
+const Sentence = ({
+  id, callback, active, setActive, children,
+}) => (
   <TreebankContext.Consumer>
     {({ json, config }) => (
       <WrappedSentence
         id={id}
         callback={callback}
+        active={active}
+        setActive={setActive}
         json={json}
         config={config}
       >
@@ -72,11 +89,15 @@ const Sentence = ({ id, callback, children }) => (
 Sentence.propTypes = {
   id: string.isRequired,
   callback: func,
+  active: string,
+  setActive: func,
   children: node,
 };
 
 Sentence.defaultProps = {
   callback: null,
+  active: null,
+  setActive: null,
   children: null,
 };
 

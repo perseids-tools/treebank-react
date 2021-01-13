@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { func, instanceOf } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
@@ -14,10 +14,6 @@ const Graph = ({
   sentence, active, toggleActive, config,
 }) => {
   const { nodes, links } = sentenceToGraph(sentence, active, config, styles);
-
-  useEffect(() => {
-    toggleActive(null);
-  }, [sentence]);
 
   return (
     <DagreWrapper
