@@ -10,10 +10,6 @@ import DagreWrapper from './DagreWrapper';
 import { sentenceToGraph } from '../../utils/parsing';
 import { Configuration } from '../../utils/config';
 
-const findWord = (wordId, sentence) => (
-  sentence.word.find(({ $: { id } }) => id === wordId)
-);
-
 const Graph = ({
   sentence, active, toggleActive, config,
 }) => {
@@ -27,7 +23,7 @@ const Graph = ({
     <DagreWrapper
       nodes={nodes}
       links={links}
-      onClick={(id) => toggleActive(findWord(id, sentence))}
+      onClick={toggleActive}
     />
   );
 };

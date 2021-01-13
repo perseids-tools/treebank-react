@@ -52,7 +52,7 @@ const renderWord = (word, active, toggleActive) => {
   const isActive = active && active.$.id === id;
   const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
   const onClick = () => {
-    toggleActive(word);
+    toggleActive(id);
   };
   const onKeyDown = (event) => {
     const { key } = event;

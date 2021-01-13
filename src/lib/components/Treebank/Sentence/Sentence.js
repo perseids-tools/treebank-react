@@ -10,18 +10,26 @@ const sentenceFromJson = (json, id) => (
   json.treebank.sentence.find(({ $ }) => $.id && $.id === id)
 );
 
+const findWord = (wordId, sentence) => (
+  sentence.word.find(({ $: { id } }) => id === wordId)
+);
+
 const WrappedSentence = ({
   // eslint-disable-next-line react/prop-types
   id, callback, json, config, children,
 }) => {
-  const [active, setActive] = useState(null);
+  const [activeId, setActiveId] = useState(null);
   const sentence = sentenceFromJson(json, id);
 
-  const toggleActive = (word) => {
-    if (word && active && word.$.id === active.$.id) {
-      setActive(null);
+  const active = findWord(activeId, sentence);
+
+  const toggleActive = (wordId) => {
+    const newActive = findWord(wordId, sentence);
+
+    if (newActive && active && activeId === wordId) {
+      setActiveId(null);
     } else {
-      setActive(word);
+      setActiveId(wordId);
     }
   };
 
