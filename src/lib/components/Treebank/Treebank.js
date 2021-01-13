@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { node, string } from 'prop-types';
+import React, { useMemo, useState, useEffect } from 'react';
+import { node, string, func } from 'prop-types';
 
 import { xmlToJson } from '../../utils/parsing';
 import { getConfig } from '../../utils/config';
@@ -15,11 +15,19 @@ const configFromJson = (json, configUrl, callback) => (
   )
 );
 
-const Treebank = ({ treebank, configUrl, children }) => {
+const Treebank = ({
+  treebank, configUrl, callback, children,
+}) => {
   const [config, setConfig] = useState(null);
   const json = useMemo(() => xmlToJson(treebank), [treebank]);
 
   useMemo(() => configFromJson(json, configUrl, setConfig), [treebank]);
+
+  useEffect(() => {
+    if (callback) {
+      callback(json);
+    }
+  }, [treebank]);
 
   if (config) {
     return (
@@ -37,11 +45,13 @@ const Treebank = ({ treebank, configUrl, children }) => {
 Treebank.propTypes = {
   treebank: string.isRequired,
   configUrl: string,
+  callback: func,
   children: node,
 };
 
 Treebank.defaultProps = {
   configUrl: 'https://arethusa-configs.perseids.org/',
+  callback: null,
   children: null,
 };
 
