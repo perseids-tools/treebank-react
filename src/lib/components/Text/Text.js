@@ -46,7 +46,7 @@ const wordToSpan = (word, config, active, toggleActive) => {
   }
 
   const onClick = () => {
-    toggleActive(word);
+    toggleActive(id);
   };
   const onKeyDown = (event) => {
     const { key } = event;

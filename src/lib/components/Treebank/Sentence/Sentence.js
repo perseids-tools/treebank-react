@@ -10,18 +10,35 @@ const sentenceFromJson = (json, id) => (
   json.treebank.sentence.find(({ $ }) => $.id && $.id === id)
 );
 
+const findWord = (wordId, sentence) => (
+  sentence.word.find(({ $: { id } }) => id === wordId)
+);
+
 const WrappedSentence = ({
   // eslint-disable-next-line react/prop-types
-  id, callback, json, config, children,
+  id, callback, active: externalActiveId, setActive: externalSetActiveId, json, config, children,
 }) => {
-  const [active, setActive] = useState(null);
+  let activeId;
+  let setActiveId;
+
+  if (externalActiveId !== null || externalSetActiveId !== null) {
+    activeId = externalActiveId;
+    setActiveId = externalSetActiveId || (() => {});
+  } else {
+    [activeId, setActiveId] = useState(null);
+  }
+
   const sentence = sentenceFromJson(json, id);
 
-  const toggleActive = (word) => {
-    if (word && active && word.$.id === active.$.id) {
-      setActive(null);
+  const active = findWord(activeId, sentence);
+
+  const toggleActive = (wordId) => {
+    const newActive = findWord(wordId, sentence);
+
+    if (newActive && active && activeId === wordId) {
+      setActiveId(null);
     } else {
-      setActive(word);
+      setActiveId(wordId);
     }
   };
 
@@ -29,6 +46,10 @@ const WrappedSentence = ({
     if (callback) {
       callback(sentence);
     }
+  }, [id, json]);
+
+  useEffect(() => {
+    setActiveId(externalActiveId);
   }, [id, json]);
 
   return (
@@ -46,12 +67,16 @@ const WrappedSentence = ({
   );
 };
 
-const Sentence = ({ id, callback, children }) => (
+const Sentence = ({
+  id, callback, active, setActive, children,
+}) => (
   <TreebankContext.Consumer>
     {({ json, config }) => (
       <WrappedSentence
         id={id}
         callback={callback}
+        active={active}
+        setActive={setActive}
         json={json}
         config={config}
       >
@@ -64,11 +89,15 @@ const Sentence = ({ id, callback, children }) => (
 Sentence.propTypes = {
   id: string.isRequired,
   callback: func,
+  active: string,
+  setActive: func,
   children: node,
 };
 
 Sentence.defaultProps = {
   callback: null,
+  active: null,
+  setActive: null,
   children: null,
 };
 
