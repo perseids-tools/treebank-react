@@ -3,6 +3,9 @@
 
 # testing
 /coverage
+/visual-test
+Dockerfile-test
+docker-compose.test.yml
 
 # misc
 .DS_Store
