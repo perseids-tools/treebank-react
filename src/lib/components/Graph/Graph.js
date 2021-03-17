@@ -11,9 +11,9 @@ import { sentenceToGraph } from '../../utils/parsing';
 import { Configuration } from '../../utils/config';
 
 const Graph = ({
-  sentence, active, toggleActive, config,
+  sentence, active, toggleActive, highlight, config,
 }) => {
-  const { nodes, links } = sentenceToGraph(sentence, active, config, styles);
+  const { nodes, links } = sentenceToGraph(sentence, active, highlight, config, styles);
 
   return (
     <DagreWrapper
@@ -28,11 +28,13 @@ Graph.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
   toggleActive: func.isRequired,
+  highlight: instanceOf(Set),
   config: instanceOf(Configuration).isRequired,
 };
 
 Graph.defaultProps = {
   active: null,
+  highlight: new Set(),
 };
 
 export default Graph;

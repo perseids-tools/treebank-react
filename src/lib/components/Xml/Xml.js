@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { func } from 'prop-types';
+import { func, instanceOf } from 'prop-types';
 
 import { sentenceType, wordType } from '../../types';
 
@@ -47,10 +47,9 @@ const closingTag = (name, key) => (
   </Fragment>
 );
 
-const renderWord = (word, active, toggleActive) => {
+const renderWord = (word, active, toggleActive, highlight) => {
   const { $: { id } } = word;
-  const isActive = active && active.$.id === id;
-  const className = isActive ? [styles.word, styles.active].join(' ') : styles.word;
+  const classes = [styles.word];
   const onClick = () => {
     toggleActive(id);
   };
@@ -62,12 +61,18 @@ const renderWord = (word, active, toggleActive) => {
     }
   };
 
+  if (active && active.$.id === id) {
+    classes.push(styles.active);
+  } else if (highlight.has(id)) {
+    classes.push(styles.highlight);
+  }
+
   return (
     <div
       key={id}
       role="button"
       tabIndex="0"
-      className={className}
+      className={classes.join(' ')}
       onClick={onClick}
       onKeyDown={onKeyDown}
     >
@@ -76,11 +81,13 @@ const renderWord = (word, active, toggleActive) => {
   );
 };
 
-const Xml = ({ sentence, active, toggleActive }) => (
+const Xml = ({
+  sentence, active, toggleActive, highlight,
+}) => (
   <div className={styles.xml}>
     {openingTag('sentence', sentence.$, 'sentence')}
     {sentence.word.map((word) => (
-      renderWord(word, active, toggleActive)
+      renderWord(word, active, toggleActive, highlight)
     ))}
     {closingTag('sentence', 'sentence-close')}
   </div>
@@ -90,11 +97,13 @@ Xml.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
   toggleActive: func,
+  highlight: instanceOf(Set),
 };
 
 Xml.defaultProps = {
   active: null,
   toggleActive: () => {},
+  highlight: new Set(),
 };
 
 export default Xml;

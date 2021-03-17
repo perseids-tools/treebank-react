@@ -9,7 +9,7 @@ const xmlToJson = (xml) => {
   return json;
 };
 
-const createNode = (word, active, config, styles) => {
+const createNode = (word, active, highlight, config, styles) => {
   const {
     $: {
       id, form, postag, artificial,
@@ -17,10 +17,15 @@ const createNode = (word, active, config, styles) => {
   } = word;
   const color = config.getColor(postag);
   const isActive = active && active.$.id === id;
+  const isHighlighted = !isActive && highlight.has(id);
   const classes = [styles.node];
 
   if (isActive) {
     classes.push(styles.active);
+  }
+
+  if (isHighlighted) {
+    classes.push(styles.highlight);
   }
 
   if (artificial === 'elliptic') {
@@ -37,6 +42,7 @@ const createNode = (word, active, config, styles) => {
       labelType: 'html',
       class: classes.join(' '),
       isActive,
+      isHighlighted,
     },
   };
 };
@@ -62,11 +68,11 @@ const createLink = (word) => {
   return null;
 };
 
-const sentenceToGraph = (sentence, active, config, styles) => {
+const sentenceToGraph = (sentence, active, highlight, config, styles) => {
   const graph = { nodes: [{ id: '0', label: '[ROOT]', config: { labelType: 'html', class: styles.node } }], links: [] };
 
   sentence.word.forEach((word) => {
-    const node = createNode(word, active, config, styles);
+    const node = createNode(word, active, highlight, config, styles);
     const link = createLink(word);
 
     graph.nodes.push(node);

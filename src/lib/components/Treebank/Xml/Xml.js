@@ -6,8 +6,15 @@ import Xml from '../../Xml';
 
 const XmlWithContext = () => (
   <SentenceContext.Consumer>
-    {({ sentence, active, toggleActive }) => (
-      <Xml sentence={sentence} active={active} toggleActive={toggleActive} />
+    {({
+      sentence, active, toggleActive, highlight,
+    }) => (
+      <Xml
+        sentence={sentence}
+        active={active}
+        toggleActive={toggleActive}
+        highlight={highlight}
+      />
     )}
   </SentenceContext.Consumer>
 );

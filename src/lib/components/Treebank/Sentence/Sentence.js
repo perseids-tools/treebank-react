@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { node, string, func } from 'prop-types';
+import {
+  node, string, func, arrayOf, instanceOf, oneOfType,
+} from 'prop-types';
 
 import styles from './Sentence.module.scss';
 
@@ -15,8 +17,16 @@ const findWord = (wordId, sentence) => (
 );
 
 const WrappedSentence = ({
-  // eslint-disable-next-line react/prop-types
-  id, callback, active: externalActiveId, setActive: externalSetActiveId, json, config, children,
+  /* eslint-disable react/prop-types */
+  id,
+  callback,
+  active: externalActiveId,
+  setActive: externalSetActiveId,
+  highlight: highlightIterable,
+  json,
+  config,
+  children,
+  /* eslint-enable react/prop-types */
 }) => {
   let activeId;
   let setActiveId;
@@ -27,6 +37,8 @@ const WrappedSentence = ({
   } else {
     [activeId, setActiveId] = useState(null);
   }
+
+  const highlight = new Set(highlightIterable);
 
   const sentence = sentenceFromJson(json, id);
 
@@ -58,6 +70,7 @@ const WrappedSentence = ({
       config,
       active,
       toggleActive,
+      highlight,
     }}
     >
       <div className={styles.container}>
@@ -68,7 +81,7 @@ const WrappedSentence = ({
 };
 
 const Sentence = ({
-  id, callback, active, setActive, children,
+  id, callback, active, setActive, highlight, children,
 }) => (
   <TreebankContext.Consumer>
     {({ json, config }) => (
@@ -77,6 +90,7 @@ const Sentence = ({
         callback={callback}
         active={active}
         setActive={setActive}
+        highlight={highlight}
         json={json}
         config={config}
       >
@@ -91,6 +105,7 @@ Sentence.propTypes = {
   callback: func,
   active: string,
   setActive: func,
+  highlight: oneOfType([arrayOf(string), instanceOf(Set)]),
   children: node,
 };
 
@@ -98,6 +113,7 @@ Sentence.defaultProps = {
   callback: null,
   active: null,
   setActive: null,
+  highlight: [],
   children: null,
 };
 

@@ -1,5 +1,374 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`displays highlighted and active words differently 1`] = `
+<div
+  className="xml"
+>
+  <span
+    className="bracket"
+  >
+    
+    &lt;
+  </span>
+  <span
+    className="element"
+  >
+    sentence
+  </span>
+   
+  <span
+    className="attribute"
+  >
+    id
+    =
+  </span>
+  <span
+    className="attributeText"
+  >
+    "
+    1
+    "
+  </span>
+   
+  <span
+    className="attribute"
+  >
+    document_id
+    =
+  </span>
+  <span
+    className="attributeText"
+  >
+    "
+    test
+    "
+  </span>
+   
+  <span
+    className="attribute"
+  >
+    subdoc
+    =
+  </span>
+  <span
+    className="attributeText"
+  >
+    "
+    2
+    "
+  </span>
+   
+  <span
+    className="attribute"
+  >
+    span
+    =
+  </span>
+  <span
+    className="attributeText"
+  >
+    "
+    
+    "
+  </span>
+  
+  <span
+    className="bracket"
+  >
+    &gt;
+  </span>
+  <br />
+  <div
+    className="word active"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <span
+      className="bracket"
+    >
+          
+      &lt;
+    </span>
+    <span
+      className="element"
+    >
+      word
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      id
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      1
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      form
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      Ἡροδότου
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      postag
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      n-s---mg-
+      "
+    </span>
+     /
+    <span
+      className="bracket"
+    >
+      &gt;
+    </span>
+    <br />
+  </div>
+  <div
+    className="word"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <span
+      className="bracket"
+    >
+          
+      &lt;
+    </span>
+    <span
+      className="element"
+    >
+      word
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      id
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      2
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      form
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      Ἁλικαρνησσέος
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      postag
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      n-s---mg-
+      "
+    </span>
+     /
+    <span
+      className="bracket"
+    >
+      &gt;
+    </span>
+    <br />
+  </div>
+  <div
+    className="word highlight"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <span
+      className="bracket"
+    >
+          
+      &lt;
+    </span>
+    <span
+      className="element"
+    >
+      word
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      id
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      3
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      form
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      ἱστορίης
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      postag
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      n-s---fg-
+      "
+    </span>
+     /
+    <span
+      className="bracket"
+    >
+      &gt;
+    </span>
+    <br />
+  </div>
+  <div
+    className="word"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <span
+      className="bracket"
+    >
+          
+      &lt;
+    </span>
+    <span
+      className="element"
+    >
+      word
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      id
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      4
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      form
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      ἀπόδεξις
+      "
+    </span>
+     
+    <span
+      className="attribute"
+    >
+      postag
+      =
+    </span>
+    <span
+      className="attributeText"
+    >
+      "
+      n-s---fn-
+      "
+    </span>
+     /
+    <span
+      className="bracket"
+    >
+      &gt;
+    </span>
+    <br />
+  </div>
+  <span
+    className="bracket"
+  >
+    &lt;
+  </span>
+  <span
+    className="element"
+  >
+    /
+    sentence
+  </span>
+  <span
+    className="bracket"
+  >
+    &gt;
+  </span>
+</div>
+`;
+
 exports[`renders a sentence as XML 1`] = `
 <div
   className="xml"

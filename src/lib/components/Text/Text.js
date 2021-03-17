@@ -28,7 +28,7 @@ const compareWords = (wordA, wordB) => {
   return 0;
 };
 
-const wordToSpan = (word, config, active, toggleActive) => {
+const wordToSpan = (word, config, active, highlight, toggleActive) => {
   const {
     $: {
       id, form, postag, artificial,
@@ -39,6 +39,8 @@ const wordToSpan = (word, config, active, toggleActive) => {
 
   if (active && active.$.id === id) {
     classes.push(styles.active);
+  } else if (highlight.has(id)) {
+    classes.push(styles.highlight);
   }
 
   if (artificial === 'elliptic') {
@@ -74,12 +76,12 @@ const wordToSpan = (word, config, active, toggleActive) => {
 };
 
 const Text = ({
-  sentence, active, toggleActive, config,
+  sentence, active, toggleActive, highlight, config,
 }) => {
   const wordsCopy = [...sentence.word];
   const spans = wordsCopy
     .sort(compareWords)
-    .map((word) => wordToSpan(word, config, active, toggleActive));
+    .map((word) => wordToSpan(word, config, active, highlight, toggleActive));
 
   return (
     <div className={styles.text}>
@@ -94,12 +96,14 @@ Text.propTypes = {
   sentence: sentenceType.isRequired,
   active: wordType,
   toggleActive: func,
+  highlight: instanceOf(Set),
   config: instanceOf(Configuration).isRequired,
 };
 
 Text.defaultProps = {
   active: null,
   toggleActive: () => {},
+  highlight: new Set(),
 };
 
 export default Text;
