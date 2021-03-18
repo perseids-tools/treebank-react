@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`displays highlighted and active words differently 1`] = `
+<div
+  className="text"
+>
+  <p>
+    <span
+      className="word active"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+      tabIndex="0"
+    >
+      Ἡροδότου
+    </span>
+     
+    <span
+      className="word"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+      tabIndex="0"
+    >
+      Ἁλικαρνησσέος
+    </span>
+     
+    <span
+      className="word highlight"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+      tabIndex="0"
+    >
+      ἱστορίης
+    </span>
+     
+    <span
+      className="word"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "color": "rgb(43, 114, 124)",
+        }
+      }
+      tabIndex="0"
+    >
+      ἀπόδεξις
+    </span>
+     
+  </p>
+</div>
+`;
+
 exports[`orders the words of a sentence correctly 1`] = `
 <div
   className="text"

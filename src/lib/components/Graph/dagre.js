@@ -48,13 +48,15 @@ class Dagre {
     // Instance variables that can be set or unset as part of a state transition
     this.active = null;
     this.previousActive = null;
+    this.toHighlight = new Set();
+    this.unHighlight = new Set();
 
     this.draw = this.draw.bind(this);
     this.checkGraphSize = this.checkGraphSize.bind(this);
     this.redraw = this.redraw.bind(this);
     this.checkLinks = this.checkLinks.bind(this);
     this.checkNodes = this.checkNodes.bind(this);
-    this.drawActive = this.drawActive.bind(this);
+    this.changeMeta = this.changeMeta.bind(this);
   }
 
   draw() {
@@ -76,16 +78,18 @@ class Dagre {
       // Checks for any changes between `nodes` and `prevNodes`
       // Also checks whether the active node has changed
       // (Sets `this.active` and `this.previousActive`)
-      // -> complete      : if there are no changes
-      // -> activeChanged : if the only change is the active node
-      // -> redraw        : if there are any other changes
+      // -> complete    : if there are no changes
+      // -> metaChanged : if the changes are not structural (e.g. active node)
+      // -> redraw      : if there are any other changes
       linksIdentical: this.checkNodes,
 
-      // Adds the `active` class to the active node in the graph
-      // Removes the `active` class from the previously active node
+      // Makes changes to the nodes in the graph that are not structural.
+      // For example, if the active node is changed or if the set of
+      // highlighted nodes is changed. These only require changing the
+      // styling of the nodes, and do not require redrawing.
       // Makes no other change to the graph
       // -> complete
-      activeChanged: this.drawActive,
+      metaChanged: this.changeMeta,
 
       // Draws the graph
       // If the graph has already been drawn, this function redraws it
@@ -133,6 +137,9 @@ class Dagre {
   checkNodes() {
     let ii;
 
+    this.toHighlight.clear();
+    this.unHighlight.clear();
+
     for (ii = 0; ii < this.nodes.length; ii += 1) {
       const node = this.nodes[ii];
       const prevNode = this.prevNodes[ii];
@@ -152,12 +159,22 @@ class Dagre {
       if (node.config.isActive) {
         this.active = node;
       }
+
+      if (node.config.isHighlighted && !prevNode.config.isHighlighted) {
+        this.toHighlight.add(node.id);
+      }
+
+      if (!node.config.isHighlighted && prevNode.config.isHighlighted) {
+        this.unHighlight.add(node.id);
+      }
     }
 
     if ((this.active && !this.previousActive)
       || (!this.active && this.previousActive)
-      || (this.active && this.previousActive && this.active.id !== this.previousActive.id)) {
-      this.state = 'activeChanged';
+      || (this.active && this.previousActive && this.active.id !== this.previousActive.id)
+      || this.toHighlight.size > 0
+      || this.unHighlight.size > 0) {
+      this.state = 'metaChanged';
 
       return;
     }
@@ -165,10 +182,14 @@ class Dagre {
     this.state = 'complete';
   }
 
-  drawActive() {
-    const { active } = this;
-    const { previousActive } = this;
-    const { onClick } = this;
+  changeMeta() {
+    const {
+      active,
+      previousActive,
+      toHighlight,
+      unHighlight,
+      onClick,
+    } = this;
 
     this.selectedG.selectAll('g.node').each(function () {
       if (active && this.__data__ === active.id) {
@@ -185,6 +206,14 @@ class Dagre {
         d3.select(this).on('mousedown', ({ target }) => {
           onClick(target.__data__);
         });
+      }
+
+      if (toHighlight.has(this.__data__)) {
+        this.classList.add(styles.highlight);
+      }
+
+      if (unHighlight.has(this.__data__)) {
+        this.classList.remove(styles.highlight);
       }
     });
 

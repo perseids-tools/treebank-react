@@ -77,6 +77,9 @@ The other components should be children (or grandchildren, etc.) of the `<Treeba
 The `<Sentence>` component accepts a string `id` which represents the `id` of the
 sentence to display.
 
+It also accepts an optional `highlight` prop. This is an array of `id` strings to be
+emphasized by the child components.
+
 #### Graph
 
 The `<Graph>` component must be within a `<Sentence>` component.

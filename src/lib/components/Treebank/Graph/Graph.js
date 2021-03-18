@@ -7,8 +7,16 @@ import Graph from '../../Graph';
 const GraphWithContext = () => (
   <SentenceContext.Consumer>
     {({
-      sentence, active, toggleActive, config,
-    }) => <Graph sentence={sentence} active={active} toggleActive={toggleActive} config={config} />}
+      sentence, active, toggleActive, highlight, config,
+    }) => (
+      <Graph
+        sentence={sentence}
+        active={active}
+        toggleActive={toggleActive}
+        highlight={highlight}
+        config={config}
+      />
+    )}
   </SentenceContext.Consumer>
 );
 

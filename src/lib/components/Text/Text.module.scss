@@ -1,5 +1,5 @@
 .text {
-  background-color: rgb(242, 242, 242);
+  background-color: #f2f2f2;
   text-align: left;
 
   padding-top: 0.2rem;
@@ -17,12 +17,16 @@
   font-weight: 450;
 
   &:hover {
-    background-color: #5BC8DC;
+    background-color: #5bc8dc;
   }
 }
 
 .active {
-  background-color: rgb(246, 217, 24);
+  background-color: #f6d918;
+}
+
+.highlight {
+  background-color: #98eb09;
 }
 
 .elliptic {

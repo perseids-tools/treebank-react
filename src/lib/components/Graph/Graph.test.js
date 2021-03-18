@@ -25,7 +25,6 @@ it('renders a sentence', () => {
   const component = (
     <Graph
       sentence={sentence}
-      active={null}
       toggleActive={() => {}}
       config={global.defaultConfig}
     />

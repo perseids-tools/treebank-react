@@ -7,7 +7,6 @@ it('renders a sentence', () => {
   const component = (
     <Text
       sentence={{ word: [{ $: { id: '1', form: 'Ἡροδότου', postag: 'n-s---mg-' } }] }}
-      active={null}
       toggleActive={() => {}}
       config={global.defaultConfig}
     />
@@ -38,7 +37,6 @@ it('orders the words of a sentence correctly', () => {
   const component = (
     <Text
       sentence={sentence}
-      active={null}
       toggleActive={() => {}}
       config={global.defaultConfig}
     />
@@ -62,8 +60,31 @@ it('styles `artificial="elliptic"` words differently', () => {
   const component = (
     <Text
       sentence={sentence}
-      active={null}
       toggleActive={() => {}}
+      config={global.defaultConfig}
+    />
+  );
+  const tree = renderer.create(component).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('displays highlighted and active words differently', () => {
+  const sentence = {
+    word: [
+      { $: { id: '1', form: 'Ἡροδότου', postag: 'n-s---mg-' } },
+      { $: { id: '2', form: 'Ἁλικαρνησσέος', postag: 'n-s---mg-' } },
+      { $: { id: '3', form: 'ἱστορίης', postag: 'n-s---fg-' } },
+      { $: { id: '4', form: 'ἀπόδεξις', postag: 'n-s---fn-' } },
+    ],
+  };
+
+  const component = (
+    <Text
+      sentence={sentence}
+      active={{ $: { id: '1' } }}
+      toggleActive={() => {}}
+      highlight={new Set(['1', '3'])}
       config={global.defaultConfig}
     />
   );

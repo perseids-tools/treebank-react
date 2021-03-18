@@ -7,9 +7,15 @@ import Text from '../../Text';
 const TextWithContext = () => (
   <SentenceContext.Consumer>
     {({
-      sentence, active, toggleActive, config,
+      sentence, active, toggleActive, highlight, config,
     }) => (
-      <Text sentence={sentence} active={active} toggleActive={toggleActive} config={config} />
+      <Text
+        sentence={sentence}
+        active={active}
+        highlight={highlight}
+        toggleActive={toggleActive}
+        config={config}
+      />
     )}
   </SentenceContext.Consumer>
 );
