@@ -3,8 +3,6 @@ import {
   node, string, func, arrayOf, instanceOf, oneOfType,
 } from 'prop-types';
 
-import styles from './Sentence.module.scss';
-
 import TreebankContext from '../treebank-context';
 import SentenceContext from '../sentence-context';
 
@@ -73,9 +71,7 @@ const WrappedSentence = ({
       highlight,
     }}
     >
-      <div className={styles.container}>
-        {children}
-      </div>
+      {children}
     </SentenceContext.Provider>
   );
 };

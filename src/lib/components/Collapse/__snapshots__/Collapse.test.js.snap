@@ -1,24 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders collapsed 1`] = `
-<button
-  className="button"
-  onClick={[Function]}
-  type="button"
->
-  <div>
-    Title
-  </div>
-  <div
-    className="right"
+<div>
+  <button
+    className="button"
+    onClick={[Function]}
+    type="button"
   >
-    +
-  </div>
-</button>
+    <div>
+      Title
+    </div>
+    <div
+      className="right"
+    >
+      +
+    </div>
+  </button>
+</div>
 `;
 
 exports[`renders uncollapsed 1`] = `
-Array [
+<div>
   <button
     className="button"
     onClick={[Function]}
@@ -32,9 +34,9 @@ Array [
     >
       -
     </div>
-  </button>,
+  </button>
   <div>
     Hello world
-  </div>,
-]
+  </div>
+</div>
 `;
