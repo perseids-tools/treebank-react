@@ -12,7 +12,7 @@ const Collapse = ({ title, children, collapsed: beginCollapsed }) => {
   }, [beginCollapsed]);
 
   return (
-    <>
+    <div>
       <button type="button" className={styles.button} onClick={toggleCollapse}>
         <div>
           {title}
@@ -22,7 +22,7 @@ const Collapse = ({ title, children, collapsed: beginCollapsed }) => {
         </div>
       </button>
       {collapsed ? null : children}
-    </>
+    </div>
   );
 };
 
