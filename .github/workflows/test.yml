@@ -33,11 +33,13 @@ jobs:
         env:
           CI: true
 
-  visual-test:
-    runs-on: ubuntu-latest
-    name: Visual regression test
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Run visual regression tests
-        run: bash ./scripts/visual-test.sh
+  # Temporarily disable visual tests and run locally.
+  # Backstop is not currently working with GitHub Actions.
+  # visual-test:
+  #   runs-on: ubuntu-latest
+  #   name: Visual regression test
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #
+  #     - name: Run visual regression tests
+  #       run: bash ./scripts/visual-test.sh
