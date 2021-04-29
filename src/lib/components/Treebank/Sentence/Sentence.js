@@ -54,7 +54,7 @@ const WrappedSentence = ({
 
   useEffect(() => {
     if (callback) {
-      callback(sentence);
+      callback({ treebank: json, sentence, configuration: config });
     }
   }, [id, json]);
 
