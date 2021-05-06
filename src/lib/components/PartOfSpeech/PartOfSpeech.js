@@ -14,10 +14,15 @@ const renderLemma = (lemma) => (
   </div>
 );
 
-const renderPostag = ([name, value]) => (
-  <div key={name} className={styles.container}>
-    <dt className={styles.dt}>{name}</dt>
-    <dd className={styles.dd}>{value}</dd>
+// eslint-disable-next-line react/prop-types
+const renderValue = ({ long, short, key }) => (
+  <dd className={styles.dd}>{long || short || key}</dd>
+);
+
+const renderPostag = ([{ long, short, key }, value]) => (
+  <div key={key} className={styles.container}>
+    <dt className={styles.dt}>{long || short || key}</dt>
+    {renderValue(value)}
   </div>
 );
 

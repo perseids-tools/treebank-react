@@ -30,14 +30,13 @@ class Configuration {
 
       postagSchema.forEach((type, index) => {
         const attribute = attributes[type];
-        const name = attribute.long || attribute.short || type;
         const values = Object.entries(attribute.values);
         const match = values.find(([, { postag: abbreviation }]) => abbreviation === postag[index]);
 
         if (match) {
           deconstructedPostag.push([
-            name,
-            match[1].long || match[1].short || match[0],
+            { long: attribute.long, short: attribute.short, key: type },
+            { long: match[1].long, short: match[1].short, key: match[0] },
           ]);
         }
       });
