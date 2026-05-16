@@ -36,7 +36,7 @@ import {
   Sentence,
   Text,
   Graph,
-  Information,
+  PartOfSpeech,
   Xml,
   Collapse,
 } from 'treebank-react';
@@ -56,7 +56,7 @@ const App = () => (
     <Sentence id="1">
       <Text />
       <Graph />
-      <Information />
+      <PartOfSpeech />
       <Collapse title="XML">
         <Xml />
       </Collapse>
@@ -94,9 +94,9 @@ This is subject to change, but currently it expects a parent with `display: flex
 </div>
 ```
 
-#### Information
+#### PartOfSpeech
 
-The `<Information>` component shows the deconstructed POSTag and the lemma for the active word.
+The `<PartOfSpeech>` component shows the deconstructed POSTag and the lemma for the active word.
 The headers are taken from the treebank configuration.
 See [alpheios-project/arethusa-configs](https://github.com/alpheios-project/arethusa-configs) for more information about treebank configuration.
 
