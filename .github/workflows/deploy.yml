@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '14'
+          node-version: '24'
 
       - name: Install dependencies
         run: yarn install
